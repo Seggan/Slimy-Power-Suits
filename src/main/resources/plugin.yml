@@ -1,0 +1,6 @@
+name: SlimyPowerSuits
+main: io.github.seggan.slimypowersuits.SlimyPowerSuits
+version: ${version}
+author: Seggan
+depend: [Slimefun, LiteXpansion]
+api-version: 1.15
