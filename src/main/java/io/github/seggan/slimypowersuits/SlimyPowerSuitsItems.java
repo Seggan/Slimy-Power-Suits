@@ -82,7 +82,27 @@ public final class SlimyPowerSuitsItems {
             "",
             "These built in reaction wheels",
             "increase your speed when you",
-            "sprint."
+            "sprint. Install on leggings."
+    );
+
+    public static final SlimefunItemStack FEATHER_MODULE = new SlimefunItemStack(
+            "FEATHER_FALLING_MODULE",
+            MODULE_TEXTURE,
+            "Nanofiber Cushion Module",
+            "",
+            "A specially designed nanofiber",
+            "cushion to protect you from any",
+            "fall. Install on boots."
+    );
+
+    public static final SlimefunItemStack RESISTANCE_MODULE = new SlimefunItemStack(
+            "RESISTANCE_MODULE",
+            MODULE_TEXTURE,
+            "Kinetic Reactive Alloy Module",
+            "",
+            "A light but string alloy to",
+            "protect you when battling.",
+            "Install anywhere."
     );
 
     public static final SlimefunItemStack MK1_HELMET = new SlimefunItemStack(

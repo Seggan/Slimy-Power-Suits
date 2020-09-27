@@ -1,14 +1,14 @@
 package io.github.seggan.slimypowersuits.modules;
 
-public enum ModuleEffect {
+public enum ModuleType {
     DUMMY("Dummy", "DUMMY_MODULE"), // used for testing purposes
-    NO_FALL_DMG("Nanofiber Cushion", ""),
-    RESISTANCE("Kinetic Reactive Nanofiber", ""),
+    NO_FALL_DMG("Nanofiber Cushion", "FEATHER_FALLING_MODULE"),
+    RESISTANCE("Kinetic Reactive Alloy", "RESISTANCE_MODULE"),
     NIGHT_VISION("Night Vision Lenses", ""),
     GLOWING("Entity Scanner", ""),
     STRENGTH("Integrated Hydraulics", ""),
     KNOCKBACK("Repulsor Beams", ""),
-    SPEED("Inbuilt Reaction Wheels", "");
+    SPEED("Inbuilt Reaction Wheels", "SPEED_MODULE");
 
     private final String id;
     private final String name;
@@ -17,7 +17,7 @@ public enum ModuleEffect {
      * @param name the name of the module when installed
      * @param id the id of the item representing the module
      */
-    ModuleEffect(String name, String id) {
+    ModuleType(String name, String id) {
         this.name = name;
         this.id = id;
     }
@@ -30,8 +30,8 @@ public enum ModuleEffect {
         return name;
     }
 
-    public static ModuleEffect getByName(String name) {
-        for (ModuleEffect effect : ModuleEffect.values()) {
+    public static ModuleType getByName(String name) {
+        for (ModuleType effect : ModuleType.values()) {
             if (effect.getName().equals(name)) {
                 return effect;
             }

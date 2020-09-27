@@ -15,44 +15,15 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.List;
 
-public class Module extends SimpleSlimefunItem<ItemUseHandler> implements NotPlaceable {
-    private final ModuleEffect effect;
-    public Module(SlimefunItemStack item, ItemStack[] recipe, ModuleEffect effect) {
+public class Module extends SlimefunItem implements NotPlaceable {
+    private final ModuleType effect;
+    public Module(SlimefunItemStack item, ItemStack[] recipe, ModuleType effect) {
         super(SlimyPowerSuitsItems.SUITS, item, RecipeType.ENHANCED_CRAFTING_TABLE, recipe);
         this.effect = effect;
     }
 
-    public ModuleEffect getEffect() {
+    public ModuleType getEffect() {
         return effect;
     };
-
-    @Override
-    public ItemUseHandler getItemHandler() {
-        return e -> {
-            PlayerInventory inv = e.getPlayer().getInventory();
-            ItemStack mainHand = inv.getItemInMainHand();
-
-            if (!(SlimefunItem.getByItem(mainHand) instanceof Module)) {
-                return;
-            }
-            SlimefunItem item = SlimefunItem.getByItem(inv.getItemInOffHand());
-            if (item instanceof SuitPiece) {
-                ItemMeta meta = inv.getItemInOffHand().getItemMeta();
-                List<String> lore = meta.getLore();
-                int capacity = ((SuitPiece) item).getModuleCapacity();
-                capacity = item.getID().contains("POWER_SUIT_CHESTPLATE_MK") ? capacity * 2 : capacity;
-                if (SuitUtils.getInstalledModules(lore).size() < capacity) {
-                    Module module = (Module) SlimefunItem.getByItem(mainHand);
-                    lore.add(module.getEffect().getName());
-                    meta.setLore(lore);
-                    inv.getItemInOffHand().setItemMeta(meta);
-                    mainHand.setAmount(mainHand.getAmount() - 1);
-                    inv.setItemInMainHand(mainHand);
-                } else {
-                    e.getPlayer().sendMessage("OOps");
-                }
-            }
-        };
-    }
 
 }

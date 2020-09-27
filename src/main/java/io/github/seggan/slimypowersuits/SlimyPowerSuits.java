@@ -5,7 +5,7 @@ import dev.j3fftw.litexpansion.machine.MetalForge;
 import io.github.seggan.slimypowersuits.handlers.ModuleHandler;
 import io.github.seggan.slimypowersuits.handlers.PowerSuitHandler;
 import io.github.seggan.slimypowersuits.modules.Module;
-import io.github.seggan.slimypowersuits.modules.ModuleEffect;
+import io.github.seggan.slimypowersuits.modules.ModuleType;
 import io.github.seggan.slimypowersuits.suits.MK1SuitPiece;
 import io.github.seggan.slimypowersuits.suits.SuitPiece;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
@@ -87,7 +87,7 @@ public class SlimyPowerSuits extends JavaPlugin implements SlimefunAddon {
                 null, null, null,
                 null, new ItemStack(Material.BARRIER), null,
                 null, null, null
-        }, ModuleEffect.DUMMY).register(this);
+        }, ModuleType.DUMMY).register(this);
 
         registerBasicItem(SlimyPowerSuitsItems.EMPTY_MODULE, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
                 Items.MAG_THOR, Items.IRIDIUM_PLATE, Items.MAG_THOR,
@@ -99,8 +99,19 @@ public class SlimyPowerSuits extends JavaPlugin implements SlimefunAddon {
                 new ItemStack(Material.SLIME_BALL), Items.ADVANCED_ALLOY, new ItemStack(Material.SLIME_BALL),
                 Items.ADVANCED_ALLOY, SlimyPowerSuitsItems.EMPTY_MODULE, Items.ADVANCED_ALLOY,
                 new ItemStack(Material.SLIME_BALL), Items.ADVANCED_ALLOY, new ItemStack(Material.SLIME_BALL)
-        }, ModuleEffect.SPEED).register(this);
+        }, ModuleType.SPEED).register(this);
 
+        new Module(SlimyPowerSuitsItems.RESISTANCE_MODULE, new ItemStack[]{
+                Items.IRIDIUM_PLATE, Items.UU_MATTER, Items.IRIDIUM_PLATE,
+                Items.UU_MATTER, SlimyPowerSuitsItems.EMPTY_MODULE, Items.UU_MATTER,
+                Items.IRIDIUM_PLATE, Items.UU_MATTER, Items.IRIDIUM_PLATE
+        }, ModuleType.RESISTANCE).register(this);
+
+        new Module(SlimyPowerSuitsItems.FEATHER_MODULE, new ItemStack[]{
+                new ItemStack(Material.FEATHER), Items.RAW_CARBON_MESH, new ItemStack(Material.FEATHER),
+                Items.RAW_CARBON_MESH, SlimyPowerSuitsItems.EMPTY_MODULE, Items.RAW_CARBON_MESH,
+                new ItemStack(Material.FEATHER), Items.RAW_CARBON_MESH, new ItemStack(Material.FEATHER)
+        }, ModuleType.NO_FALL_DMG).register(this);
 
         // register suits
         registerArmor(1, SlimyPowerSuitsItems.MK1_HELMET, new ItemStack[]{
@@ -139,45 +150,28 @@ public class SlimyPowerSuits extends JavaPlugin implements SlimefunAddon {
     }
 
     private void runArmorTask() {
-        int suitPieces;
         for (Player p : getServer().getOnlinePlayers()) {
             PlayerInventory inv = p.getInventory();
-            suitPieces = 0;
 
             ItemStack item = inv.getHelmet();
             if (SuitUtils.isPowerSuitPiece(item)) {
-                suitPieces += 1;
                 SuitPiece.charge(item);
-                List<ModuleEffect> modules = SuitUtils.getInstalledModules(item.getItemMeta().getLore());
+                List<ModuleType> modules = SuitUtils.getInstalledModules(item.getItemMeta().getLore());
             }
             item = inv.getChestplate();
             if (SuitUtils.isPowerSuitPiece(item)) {
-                suitPieces += 1;
                 SuitPiece.charge(item);
-                List<ModuleEffect> modules = SuitUtils.getInstalledModules(item.getItemMeta().getLore());
+                List<ModuleType> modules = SuitUtils.getInstalledModules(item.getItemMeta().getLore());
             }
             item = inv.getLeggings();
             if (SuitUtils.isPowerSuitPiece(item)) {
-                suitPieces += 1;
                 SuitPiece.charge(item);
-                List<ModuleEffect> modules = SuitUtils.getInstalledModules(item.getItemMeta().getLore());
+                List<ModuleType> modules = SuitUtils.getInstalledModules(item.getItemMeta().getLore());
             }
             item = inv.getBoots();
             if (SuitUtils.isPowerSuitPiece(item)) {
-                suitPieces += 1;
                 SuitPiece.charge(item);
-                List<ModuleEffect> modules = SuitUtils.getInstalledModules(item.getItemMeta().getLore());
-            }
-
-            if (suitPieces == 4) {
-                p.addPotionEffect(new PotionEffect(
-                        PotionEffectType.DAMAGE_RESISTANCE,
-                        21,
-                        1,
-                        false,
-                        false,
-                        false
-                ));
+                List<ModuleType> modules = SuitUtils.getInstalledModules(item.getItemMeta().getLore());
             }
         }
     }
