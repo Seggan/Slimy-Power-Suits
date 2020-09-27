@@ -12,7 +12,10 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.inventory.InventoryAction;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -54,6 +57,55 @@ public class ModuleHandler implements Listener {
                 meta.setLore(lore);
                 offHand.setItemMeta(meta);
                 inv.setItemInOffHand(offHand);
+            }
+        }
+    }
+
+    @EventHandler
+    public void onInventorySwap(InventoryClickEvent e) {
+        if (e.getAction() == InventoryAction.SWAP_WITH_CURSOR) {
+            Inventory inv = e.getClickedInventory();
+            ItemStack item1 = e.getCurrentItem();
+            ItemStack item2 = e.getCursor();
+            ItemStack suit;
+            ItemStack other;
+            if (SuitUtils.isPowerSuitPiece(item1)) {
+                suit = item1.clone();
+                other = item2.clone();
+            } else if (SuitUtils.isPowerSuitPiece(item2)) {
+                suit = item2.clone();
+                other = item1.clone();
+            } else {
+                return;
+            }
+            SlimefunItem otherItem = SlimefunItem.getByItem(other);
+            ItemMeta meta = suit.getItemMeta();
+            List<String> lore = meta.getLore();
+            if (otherItem instanceof Module) {
+                e.setCancelled(true);
+                SlimefunItem item = SlimefunItem.getByItem(suit);
+                int capacity = ((SuitPiece) item).getModuleCapacity();
+                capacity = item.getID().contains("POWER_SUIT_CHESTPLATE_MK") ? capacity * 2 : capacity;
+                if (SuitUtils.getInstalledModules(lore).size() < capacity) {
+                    Module module = (Module) SlimefunItem.getByItem(other);
+                    lore.add(module.getEffect().getName());
+                    meta.setLore(lore);
+                    suit.setItemMeta(meta);
+                    e.setCurrentItem(suit);
+                    other.setAmount(other.getAmount() - 1);
+                    e.getWhoClicked().setItemOnCursor(other);
+                    inv.addItem(SlimefunItem.getByID("EMPTY_MODULE").getItem());
+                } else if (otherItem.getID().equals("EMPTY_MODULE")) {
+                    e.setCancelled(true);
+                    if (SuitUtils.getInstalledModules(lore).size() > 0) {
+                        ModuleType effect = ModuleType.getByName(ModuleHandler.pop(lore));
+                        inv.addItem(SlimefunItem.getByID(effect.getId()).getItem());
+                        meta.setLore(lore);
+                        suit.setItemMeta(meta);
+                        e.setCurrentItem(suit);
+                        e.getWhoClicked().setItemOnCursor(SlimefunItem.getByID("EMPTY_MODULE").getItem());
+                    }
+                }
             }
         }
     }
