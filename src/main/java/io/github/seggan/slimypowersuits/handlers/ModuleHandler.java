@@ -23,45 +23,37 @@ public class ModuleHandler implements Listener {
 
     @EventHandler
     public void onModuleInteract(PlayerInteractEvent e) {
-        if (!((e.getAction() == Action.RIGHT_CLICK_BLOCK) || e.getAction() == Action.LEFT_CLICK_AIR)) {
+        if (!(e.getAction() == Action.LEFT_CLICK_BLOCK)) {
             return;
         }
         PlayerInventory inv = e.getPlayer().getInventory();
-        if (!(inv.getItemInMainHand().getType() == Material.AIR)) {
+        ItemStack mainHand = inv.getItemInMainHand();
+        ItemStack offHand = inv.getItemInOffHand();
+        if (!SuitUtils.isPowerSuitPiece(offHand)) {
             return;
         }
-        ItemStack mainHand = inv.getItemInMainHand();
-        ItemStack offhand = inv.getItemInOffHand();
-        if (SlimefunItem.getByItem(offhand) instanceof SuitPiece) {
-            ItemStack[] armorContents = inv.getArmorContents();
-            ItemMeta meta = offhand.getItemMeta();
-            List<String> lore = meta.getLore();
-            if (SlimefunItem.getByItem(mainHand) instanceof Module) {
-                SlimefunItem item = SlimefunItem.getByItem(offhand);
-                int capacity = ((SuitPiece) item).getModuleCapacity();
-                capacity = item.getID().contains("POWER_SUIT_CHESTPLATE_MK") ? capacity * 2 : capacity;
-                if (SuitUtils.getInstalledModules(lore).size() < capacity) {
-                    Module module = (Module) SlimefunItem.getByItem(mainHand);
-                    lore.add(module.getEffect().getName());
-                    meta.setLore(lore);
-                    offhand.setItemMeta(meta);
-                    inv.setItemInOffHand(offhand);
-                    mainHand.setAmount(mainHand.getAmount() - 1);
-                    inv.setItemInMainHand(mainHand);
-                    inv.setArmorContents(armorContents);
-                    e.setCancelled(true);
-                } else {
-                    if (SuitUtils.getInstalledModules(lore).size() > 0) {
-                        ModuleType effect = ModuleType.getByName(ModuleHandler.pop(lore));
-                        inv.addItem(SlimefunItem.getByID(effect.getId()).getItem());
-                        meta.setLore(lore);
-                        offhand.setItemMeta(meta);
-                        inv.setItemInOffHand(offhand);
-                        inv.setArmorContents(armorContents);
-                    } else {
-                        e.getPlayer().sendMessage("OPPPP");
-                    }
-                }
+        ItemMeta meta = offHand.getItemMeta();
+        List<String> lore = meta.getLore();
+        SlimefunItem item = SlimefunItem.getByItem(offHand);
+        if (SlimefunItem.getByItem(mainHand) instanceof Module) {
+            int capacity = ((SuitPiece) item).getModuleCapacity();
+            capacity = item.getID().contains("POWER_SUIT_CHESTPLATE_MK") ? capacity * 2 : capacity;
+            if (SuitUtils.getInstalledModules(lore).size() < capacity) {
+                Module module = (Module) SlimefunItem.getByItem(mainHand);
+                lore.add(module.getEffect().getName());
+                meta.setLore(lore);
+                offHand.setItemMeta(meta);
+                inv.setItemInOffHand(offHand);
+                mainHand.setAmount(mainHand.getAmount() - 1);
+                inv.setItemInMainHand(mainHand);
+            }
+        } else {
+            if (SuitUtils.getInstalledModules(lore).size() > 0) {
+                ModuleType effect = ModuleType.getByName(ModuleHandler.pop(lore));
+                inv.addItem(SlimefunItem.getByID(effect.getId()).getItem());
+                meta.setLore(lore);
+                offHand.setItemMeta(meta);
+                inv.setItemInOffHand(offHand);
             }
         }
     }
