@@ -80,7 +80,7 @@ public class SlimyPowerSuits extends JavaPlugin implements SlimefunAddon {
         registerBasicItem(SlimyPowerSuitsItems.SUIT_GENERATOR, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
                 SlimyPowerSuitsItems.UNPATENTABLIUM, SlimyPowerSuitsItems.UNPATENTABLIUM, SlimyPowerSuitsItems.UNPATENTABLIUM,
                 SlimyPowerSuitsItems.UNPATENTABLIUM, SlimefunItems.NETHER_STAR_REACTOR, SlimyPowerSuitsItems.UNPATENTABLIUM,
-                SlimyPowerSuitsItems.UNPATENTABLIUM, Items.LAPOTRON_CRYSTAL, SlimyPowerSuitsItems.UNPATENTABLIUM,
+                SlimyPowerSuitsItems.UNPATENTABLIUM, SlimefunItems.POWER_CRYSTAL, SlimyPowerSuitsItems.UNPATENTABLIUM,
         });
 
         // register modules
