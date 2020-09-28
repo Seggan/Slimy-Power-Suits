@@ -34,7 +34,7 @@ public class SlimyPowerSuits extends JavaPlugin implements SlimefunAddon {
 
         instance = this;
 
-        Metrics metrics = new Metrics(this,8980);
+        Metrics metrics = new Metrics(this, 8980);
 
         getServer().getPluginManager().registerEvents(new ModuleHandler(), this);
         getServer().getPluginManager().registerEvents(new PowerSuitHandler(), this);
@@ -126,7 +126,7 @@ public class SlimyPowerSuits extends JavaPlugin implements SlimefunAddon {
 
         registerArmor(1, SlimyPowerSuitsItems.MK1_CHESTPLATE, new ItemStack[]{
                 Items.IRIDIUM_PLATE, SlimyPowerSuitsItems.SUIT_GENERATOR, Items.IRIDIUM_PLATE,
-                Items.LAPOTRON_CRYSTAL, SlimefunItems.HAZMAT_CHESTPLATE, Items.LAPOTRON_CRYSTAL,
+                SlimefunItems.POWER_CRYSTAL, SlimefunItems.HAZMAT_CHESTPLATE, SlimefunItems.POWER_CRYSTAL,
                 Items.IRIDIUM_PLATE, SlimyPowerSuitsItems.SUIT_GENERATOR, Items.IRIDIUM_PLATE
         });
 
