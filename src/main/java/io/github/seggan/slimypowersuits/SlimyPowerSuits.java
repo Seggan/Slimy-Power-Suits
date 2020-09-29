@@ -13,6 +13,7 @@ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
+import me.mrCookieSlime.Slimefun.cscorelib2.updater.GitHubBuildsUpdater;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
@@ -35,6 +36,10 @@ public class SlimyPowerSuits extends JavaPlugin implements SlimefunAddon {
         instance = this;
 
         Metrics metrics = new Metrics(this, 8980);
+
+        if (getDescription().getVersion().startsWith("DEV - ")) {
+            new GitHubBuildsUpdater(this, getFile(), "Seggan/Slimy-Power-Suits/master").start();
+        }
 
         getServer().getPluginManager().registerEvents(new ModuleHandler(), this);
         getServer().getPluginManager().registerEvents(new PowerSuitHandler(), this);
