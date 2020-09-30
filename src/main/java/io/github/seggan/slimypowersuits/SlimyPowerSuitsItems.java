@@ -114,7 +114,7 @@ public final class SlimyPowerSuitsItems {
             "&7that is designed to be modified.",
             "&7Slots: 1",
             LoreBuilder.powerPerSecond(1),
-            LoreBuilder.powerCharged(0, 25),
+            LoreBuilder.powerCharged(0, 10),
             "&7Installed modules:"
     );
     public static final SlimefunItemStack MK1_CHESTPLATE = new SlimefunItemStack(
@@ -126,7 +126,7 @@ public final class SlimyPowerSuitsItems {
             "&7that is designed to be modified.",
             "&7Body/Arm slots: 1",
             LoreBuilder.powerPerSecond(1),
-            LoreBuilder.powerCharged(0, 25),
+            LoreBuilder.powerCharged(0, 10),
             "&7Installed modules:"
     );
     public static final SlimefunItemStack MK1_LEGGINGS = new SlimefunItemStack(
@@ -138,7 +138,7 @@ public final class SlimyPowerSuitsItems {
             "&7that is designed to be modified.",
             "&7Slots: 1",
             LoreBuilder.powerPerSecond(1),
-            LoreBuilder.powerCharged(0, 25),
+            LoreBuilder.powerCharged(0, 10),
             "&7Installed modules:"
     );
     public static final SlimefunItemStack MK1_BOOTS = new SlimefunItemStack(
@@ -150,7 +150,7 @@ public final class SlimyPowerSuitsItems {
             "&7that is designed to be modified.",
             "&7Slots: 1",
             LoreBuilder.powerPerSecond(1),
-            LoreBuilder.powerCharged(0, 25),
+            LoreBuilder.powerCharged(0, 10),
             "&7Installed modules:"
     );
 }

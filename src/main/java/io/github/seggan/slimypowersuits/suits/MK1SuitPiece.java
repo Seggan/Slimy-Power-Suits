@@ -16,6 +16,6 @@ public class MK1SuitPiece extends SuitPiece {
 
     @Override
     public float getMaxItemCharge(ItemStack itemStack) {
-        return 25;
+        return 10;
     }
 }
