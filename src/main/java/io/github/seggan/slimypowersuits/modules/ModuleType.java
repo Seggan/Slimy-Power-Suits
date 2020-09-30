@@ -5,7 +5,7 @@ public enum ModuleType {
     NO_FALL_DMG("Nanofiber Cushion", "FEATHER_FALLING_MODULE"),
     RESISTANCE("Kinetic Reactive Alloy", "RESISTANCE_MODULE"),
     NIGHT_VISION("Night Vision Lenses", ""),
-    GLOWING("Entity Scanner", ""),
+    GLOWING("Entity Scanner", "GLOWING_MODULE"),
     STRENGTH("Integrated Hydraulics", ""),
     KNOCKBACK("Repulsor Beams", ""),
     SPEED("Inbuilt Reaction Wheels", "SPEED_MODULE");

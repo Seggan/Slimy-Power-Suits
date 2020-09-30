@@ -121,6 +121,12 @@ public class SlimyPowerSuits extends JavaPlugin implements SlimefunAddon {
                 new ItemStack(Material.FEATHER), Items.RAW_CARBON_MESH, new ItemStack(Material.FEATHER)
         }, ModuleType.NO_FALL_DMG).register(this);
 
+        new Module(MiscItems.GLOWING_MODULE, new ItemStack[]{
+            new ItemStack(Material.GLOWSTONE_DUST), SlimefunItems.WITHER_PROOF_GLASS, new ItemStack(Material.GLOWSTONE_DUST),
+            SlimefunItems.WITHER_PROOF_GLASS, MiscItems.EMPTY_MODULE, SlimefunItems.WITHER_PROOF_GLASS,
+            new ItemStack(Material.GLOWSTONE_DUST), SlimefunItems.WITHER_PROOF_GLASS, new ItemStack(Material.GLOWSTONE_DUST)
+        }, ModuleType.GLOWING).register(this);
+
         // register suits
         registerArmor(1, SuitItems.MK1_HELMET, new ItemStack[]{
                 Items.IRIDIUM_PLATE, MiscItems.SUIT_GENERATOR, Items.IRIDIUM_PLATE,

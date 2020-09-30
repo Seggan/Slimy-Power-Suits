@@ -7,7 +7,6 @@ import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
-import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 
@@ -101,9 +100,20 @@ public final class MiscItems {
             MODULE_TEXTURE,
             "Kinetic Reactive Alloy Module",
             "",
-            "A light but string alloy to",
+            "A light but strong alloy to",
             "protect you when battling.",
             "Install anywhere."
     );
 
+    public static final SlimefunItemStack GLOWING_MODULE = new SlimefunItemStack(
+        "GLOWING_MODULE",
+        MODULE_TEXTURE,
+        "Entity Scanner",
+        "",
+        "This disperser-lens combo",
+        "spreads glowstone dust onto",
+        "any nearby entities. Install",
+        "on helmet.",
+        LoreBuilder.CROUCH_TO_USE
+    );
 }

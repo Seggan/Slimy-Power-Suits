@@ -3,13 +3,17 @@ package io.github.seggan.slimypowersuits.handlers;
 import io.github.seggan.slimypowersuits.SuitUtils;
 import io.github.seggan.slimypowersuits.modules.ModuleType;
 import org.bukkit.Material;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.player.PlayerToggleSneakEvent;
 import org.bukkit.event.player.PlayerToggleSprintEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -27,7 +31,7 @@ public class PowerSuitHandler implements Listener {
         if (!SuitUtils.isPowerSuitPiece(leggings)) {
             return;
         }
-        if (SuitUtils.getInstalledModules(p.getInventory().getLeggings()).contains(ModuleType.SPEED)) {
+        if (SuitUtils.getInstalledModules(leggings).contains(ModuleType.SPEED)) {
             if (e.isSprinting()) {
                 p.addPotionEffect(new PotionEffect(
                         PotionEffectType.SPEED,
@@ -78,6 +82,34 @@ public class PowerSuitHandler implements Listener {
                     }
                 }
                 p.setHealth(p.getHealth() - ((100 - percent) / 100) * e.getFinalDamage());
+            }
+        }
+    }
+
+    @EventHandler
+    public void onCrouch(PlayerToggleSneakEvent e) {
+        Player p = e.getPlayer();
+        ItemStack helmet = p.getInventory().getHelmet();
+        if (helmet == null || helmet.getType() == Material.AIR) {
+            return;
+        }
+        if (!SuitUtils.isPowerSuitPiece(helmet)) {
+            return;
+        }
+        if (SuitUtils.getInstalledModules(helmet).contains(ModuleType.GLOWING)) {
+            if (e.isSneaking()) {
+                for (Entity entity : p.getNearbyEntities(20, 20, 20)) {
+                    if (entity instanceof LivingEntity) {
+                        ((LivingEntity) entity).addPotionEffect(new PotionEffect(
+                            PotionEffectType.GLOWING,
+                            100,
+                            0,
+                            false,
+                            false,
+                            false
+                        ));
+                    }
+                }
             }
         }
     }
