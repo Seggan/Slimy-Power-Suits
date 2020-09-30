@@ -64,7 +64,7 @@ public class PowerSuitHandler implements Listener {
                     }
                 }
                 if (pieces == 4) {
-                    percent = 20;
+                    percent = 30;
                 }
                 for (ItemStack armorPiece : inv.getArmorContents()) {
                     if (SuitUtils.isPowerSuitPiece(armorPiece)) {
@@ -73,11 +73,11 @@ public class PowerSuitHandler implements Listener {
                                 ModuleType.RESISTANCE
                         );
                         for (int i = 0; i < protModules; i++) {
-                            percent += Math.floorDiv(100 - percent, 6);
+                            percent += Math.floorDiv(100 - percent, 4);
                         }
                     }
                 }
-                e.setDamage(((100 - percent) / 100) * e.getFinalDamage());
+                p.setHealth(p.getHealth() - ((100 - percent) / 100) * e.getFinalDamage());
             }
         }
     }
