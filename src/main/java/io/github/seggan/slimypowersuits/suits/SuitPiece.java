@@ -1,7 +1,7 @@
 package io.github.seggan.slimypowersuits.suits;
 
 import io.github.seggan.slimypowersuits.SlimyPowerSuits;
-import io.github.seggan.slimypowersuits.SlimyPowerSuitsItems;
+import io.github.seggan.slimypowersuits.lists.MiscItems;
 import io.github.thebusybiscuit.slimefun4.core.attributes.ProtectionType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.ProtectiveArmor;
 import io.github.thebusybiscuit.slimefun4.core.attributes.Rechargeable;
@@ -11,14 +11,13 @@ import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
 public abstract class SuitPiece extends SlimefunArmorPiece implements ProtectiveArmor, Rechargeable {
     private final NamespacedKey key;
     private final int mark;
 
     public SuitPiece(int mark, SlimefunItemStack item, ItemStack[] recipe, String key) {
-        super(SlimyPowerSuitsItems.SUITS, item, RecipeType.ARMOR_FORGE, recipe, null);
+        super(MiscItems.SUITS, item, RecipeType.ARMOR_FORGE, recipe, null);
 
         this.key = new NamespacedKey(SlimyPowerSuits.getInstance(), key);
         this.mark = mark;
