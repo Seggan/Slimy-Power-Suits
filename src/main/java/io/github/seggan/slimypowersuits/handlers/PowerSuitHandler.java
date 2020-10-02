@@ -54,39 +54,51 @@ public class PowerSuitHandler implements Listener {
             Player p = (Player) e.getEntity();
             PlayerInventory inv = p.getInventory();
 
-            if (e.getCause() == EntityDamageEvent.DamageCause.FALL) {
-                ItemStack boots = inv.getBoots();
-                if (SuitUtils.isPowerSuitPiece(boots)) {
-                    if (SuitUtils.getInstalledModules(boots).contains(ModuleType.NO_FALL_DMG)) {
-                        e.setDamage(0);
-                    }
-                }
-            } else {
-                if (SlimefunPlugin.getProtectionManager()
-                    .hasPermission(p, e.getEntity().getLocation(), ProtectableAction.PVP)) {
-                    int pieces = 0;
-                    int percent = 0;
-                    for (ItemStack armorPiece : inv.getArmorContents()) {
-                        if (SuitUtils.isPowerSuitPiece(armorPiece)) {
-                            pieces += 1;
+            switch (e.getCause()) {
+                case FALL:
+                    ItemStack boots = inv.getBoots();
+                    if (SuitUtils.isPowerSuitPiece(boots)) {
+                        if (SuitUtils.getInstalledModules(boots).contains(ModuleType.NO_FALL_DMG)) {
+                            e.setDamage(0);
                         }
                     }
-                    if (pieces == 4) {
-                        percent = 30;
-                    }
-                    for (ItemStack armorPiece : inv.getArmorContents()) {
-                        if (SuitUtils.isPowerSuitPiece(armorPiece)) {
-                            int protModules = Collections.frequency(
-                                SuitUtils.getInstalledModules(armorPiece),
-                                ModuleType.RESISTANCE
-                            );
-                            for (int i = 0; i < protModules; i++) {
-                                percent += Math.floorDiv(100 - percent, 4);
+                    break;
+                case VOID:
+                case LIGHTNING:
+                case MAGIC:
+                case WITHER:
+                case POISON:
+                case SUFFOCATION:
+                case SUICIDE:
+                case STARVATION:
+                    return;
+                default:
+                    if (SlimefunPlugin.getProtectionManager()
+                        .hasPermission(p, e.getEntity().getLocation(), ProtectableAction.PVP)) {
+                        int pieces = 0;
+                        int percent = 0;
+                        for (ItemStack armorPiece : inv.getArmorContents()) {
+                            if (SuitUtils.isPowerSuitPiece(armorPiece)) {
+                                pieces += 1;
                             }
                         }
+                        if (pieces == 4) {
+                            percent = 30;
+                        }
+                        for (ItemStack armorPiece : inv.getArmorContents()) {
+                            if (SuitUtils.isPowerSuitPiece(armorPiece)) {
+                                int protModules = Collections.frequency(
+                                    SuitUtils.getInstalledModules(armorPiece),
+                                    ModuleType.RESISTANCE
+                                );
+                                for (int i = 0; i < protModules; i++) {
+                                    percent += Math.floorDiv(100 - percent, 4);
+                                }
+                            }
+                        }
+                        p.setHealth(p.getHealth() - ((100 - percent) / 100) * e.getFinalDamage());
                     }
-                    p.setHealth(p.getHealth() - ((100 - percent) / 100) * e.getFinalDamage());
-                }
+                    break;
             }
         }
     }
