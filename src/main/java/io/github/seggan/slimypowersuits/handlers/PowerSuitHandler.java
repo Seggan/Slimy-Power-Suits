@@ -2,6 +2,8 @@ package io.github.seggan.slimypowersuits.handlers;
 
 import io.github.seggan.slimypowersuits.SuitUtils;
 import io.github.seggan.slimypowersuits.modules.ModuleType;
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
+import me.mrCookieSlime.Slimefun.cscorelib2.protection.ProtectableAction;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
@@ -60,28 +62,31 @@ public class PowerSuitHandler implements Listener {
                     }
                 }
             } else {
-                int pieces = 0;
-                int percent = 0;
-                for (ItemStack armorPiece : inv.getArmorContents()) {
-                    if (SuitUtils.isPowerSuitPiece(armorPiece)) {
-                        pieces += 1;
-                    }
-                }
-                if (pieces == 4) {
-                    percent = 30;
-                }
-                for (ItemStack armorPiece : inv.getArmorContents()) {
-                    if (SuitUtils.isPowerSuitPiece(armorPiece)) {
-                        int protModules = Collections.frequency(
-                                SuitUtils.getInstalledModules(armorPiece),
-                                ModuleType.RESISTANCE
-                        );
-                        for (int i = 0; i < protModules; i++) {
-                            percent += Math.floorDiv(100 - percent, 4);
+                if (SlimefunPlugin.getProtectionManager()
+                    .hasPermission(p, e.getEntity().getLocation(), ProtectableAction.PVP)) {
+                    int pieces = 0;
+                    int percent = 0;
+                    for (ItemStack armorPiece : inv.getArmorContents()) {
+                        if (SuitUtils.isPowerSuitPiece(armorPiece)) {
+                            pieces += 1;
                         }
                     }
+                    if (pieces == 4) {
+                        percent = 30;
+                    }
+                    for (ItemStack armorPiece : inv.getArmorContents()) {
+                        if (SuitUtils.isPowerSuitPiece(armorPiece)) {
+                            int protModules = Collections.frequency(
+                                SuitUtils.getInstalledModules(armorPiece),
+                                ModuleType.RESISTANCE
+                            );
+                            for (int i = 0; i < protModules; i++) {
+                                percent += Math.floorDiv(100 - percent, 4);
+                            }
+                        }
+                    }
+                    p.setHealth(p.getHealth() - ((100 - percent) / 100) * e.getFinalDamage());
                 }
-                p.setHealth(p.getHealth() - ((100 - percent) / 100) * e.getFinalDamage());
             }
         }
     }
