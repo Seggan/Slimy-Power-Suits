@@ -4,6 +4,7 @@ import io.github.seggan.slimypowersuits.modules.ModuleType;
 import io.github.seggan.slimypowersuits.suits.SuitPiece;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,15 @@ public class SuitUtils {
         if (armor == null) {
             return new ArrayList<>();
         }
-        return getInstalledModules(armor.getItemMeta().getLore());
+        ItemMeta meta = armor.getItemMeta();
+        if (meta == null) {
+            return new ArrayList<>();
+        }
+        List<String> lore = meta.getLore();
+        if (lore == null) {
+            return new ArrayList<>();
+        }
+        return getInstalledModules(lore);
     }
 
     public static boolean isPowerSuitPiece(ItemStack armor) {
@@ -30,5 +39,13 @@ public class SuitUtils {
             return false;
         }
         return item instanceof SuitPiece;
+    }
+
+    public static boolean hasModule(ItemStack armor, ModuleType module) {
+        if (isPowerSuitPiece(armor)) {
+            return getInstalledModules(armor).contains(module);
+        } else {
+            return false;
+        }
     }
 }
