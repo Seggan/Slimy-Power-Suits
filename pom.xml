@@ -8,6 +8,13 @@
     <artifactId>Slimy_Power_Suits</artifactId>
     <version>UNOFFICIAL</version>
 
+    <properties>
+        <author>Seggan</author>
+        <sonar.projectKey>Seggan_Slimy-Power-Suits</sonar.projectKey>
+        <sonar.organization>seggan</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+    </properties>
+
     <build>
         <finalName>${project.name} v${project.version}</finalName>
 

@@ -96,7 +96,7 @@ public class PowerSuitHandler implements Listener {
                                 }
                             }
                         }
-                        p.setHealth(p.getHealth() - ((100 - percent) / 100) * e.getFinalDamage());
+                        e.setDamage(((100 - percent) / (double) 100) * e.getDamage());
                     }
                     break;
             }
