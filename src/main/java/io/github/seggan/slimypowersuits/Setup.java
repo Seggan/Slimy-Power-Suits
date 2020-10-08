@@ -23,6 +23,8 @@ import org.bukkit.inventory.ItemStack;
 
 public class Setup {
 
+    private Setup() {}
+
     static void registerItems(SlimyPowerSuits plugin) {
         // Register items
         registerBasicItem(plugin, MiscItems.UNPATENTABLIUM, MetalForge.RECIPE_TYPE, new ItemStack[]{

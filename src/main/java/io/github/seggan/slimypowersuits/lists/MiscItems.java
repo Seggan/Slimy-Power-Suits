@@ -4,9 +4,9 @@ import io.github.seggan.slimypowersuits.SlimyPowerSuits;
 import io.github.thebusybiscuit.slimefun4.core.attributes.MachineTier;
 import io.github.thebusybiscuit.slimefun4.core.attributes.MachineType;
 import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
+import me.mrCookieSlime.CSCoreLibPlugin.cscorelib2.skull.SkullItem;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
-import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 
@@ -19,7 +19,7 @@ public final class MiscItems {
 
     public static final Category SUITS = new Category(
             new NamespacedKey(SlimyPowerSuits.getInstance(), "SLIMY_POWER_SUITS"),
-            new CustomItem(Material.IRON_CHESTPLATE, "&7Slimy Power Suits")
+            SkullItem.fromBase64("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODA2ZmNhNWY4ZTRlNjg3ZTg3MzQ5N2Y3Y2NiY2I4MTFlODE2ZGNkOGM3MTcyM2Q0ZGE2NzgwNzRmYTcxMTdhOCJ9fX0")
     );
 
     public static final SlimefunItemStack SUIT_AI = new SlimefunItemStack(

@@ -14,7 +14,7 @@ import org.bukkit.inventory.ItemStack;
 public abstract class SuitPiece extends SlimefunArmorPiece implements ProtectiveArmor, Rechargeable {
     private final NamespacedKey key;
 
-    public SuitPiece(SlimefunItemStack item, ItemStack[] recipe, String key) {
+    protected SuitPiece(SlimefunItemStack item, ItemStack[] recipe, String key) {
         super(MiscItems.SUITS, item, RecipeType.ARMOR_FORGE, recipe, null);
 
         this.key = new NamespacedKey(SlimyPowerSuits.getInstance(), key);
