@@ -13,6 +13,7 @@ import io.github.seggan.slimypowersuits.modules.Module;
 import io.github.seggan.slimypowersuits.modules.ModuleType;
 import io.github.seggan.slimypowersuits.suits.MK1SuitPiece;
 import io.github.seggan.slimypowersuits.suits.MK2SuitPiece;
+import io.github.seggan.slimypowersuits.suits.MK3SuitPiece;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
@@ -106,25 +107,49 @@ public class Setup {
 
         registerArmor(plugin, 2, SuitItems.MK2_HELMET, new ItemStack[]{
             Items.IRIDIUM_PLATE, MiscItems.SUIT_GENERATOR, Items.IRIDIUM_PLATE,
-            Items.ADVANCED_CIRCUIT, SlimefunItems.SCUBA_HELMET, Items.ADVANCED_CIRCUIT,
+            Items.ADVANCED_CIRCUIT, SuitItems.MK1_HELMET, Items.ADVANCED_CIRCUIT,
             Items.IRIDIUM_PLATE, Items.RAW_CARBON_MESH, Items.IRIDIUM_PLATE
         });
 
         registerArmor(plugin, 2, SuitItems.MK2_CHESTPLATE, new ItemStack[]{
             Items.IRIDIUM_PLATE, MiscItems.SUIT_GENERATOR, Items.IRIDIUM_PLATE,
-            SlimefunItems.POWER_CRYSTAL, SlimefunItems.HAZMAT_CHESTPLATE, SlimefunItems.POWER_CRYSTAL,
+            SlimefunItems.POWER_CRYSTAL, SuitItems.MK1_CHESTPLATE, SlimefunItems.POWER_CRYSTAL,
             Items.IRIDIUM_PLATE, MiscItems.SUIT_GENERATOR, Items.IRIDIUM_PLATE
         });
 
         registerArmor(plugin, 2, SuitItems.MK2_LEGGINGS, new ItemStack[]{
             Items.IRIDIUM_PLATE, MiscItems.SUIT_GENERATOR, Items.IRIDIUM_PLATE,
-            Items.RAW_CARBON_FIBRE, SlimefunItems.HAZMAT_LEGGINGS, Items.RAW_CARBON_FIBRE,
+            Items.RAW_CARBON_FIBRE, SuitItems.MK1_LEGGINGS, Items.RAW_CARBON_FIBRE,
             Items.IRIDIUM_PLATE, Items.COPPER_CABLE, Items.IRIDIUM_PLATE
         });
 
         registerArmor(plugin, 2, SuitItems.MK2_BOOTS, new ItemStack[]{
             Items.IRIDIUM_PLATE, MiscItems.SUIT_GENERATOR, Items.IRIDIUM_PLATE,
-            Items.ADVANCED_ALLOY, SlimefunItems.HAZMAT_BOOTS, Items.ADVANCED_ALLOY,
+            Items.ADVANCED_ALLOY, SuitItems.MK1_BOOTS, Items.ADVANCED_ALLOY,
+            Items.IRIDIUM_PLATE, Items.ADVANCED_ALLOY, Items.IRIDIUM_PLATE
+        });
+
+        registerArmor(plugin, 3, SuitItems.MK3_HELMET, new ItemStack[]{
+            Items.IRIDIUM_PLATE, MiscItems.SUIT_GENERATOR, Items.IRIDIUM_PLATE,
+            Items.ADVANCED_CIRCUIT, SuitItems.MK2_HELMET, Items.ADVANCED_CIRCUIT,
+            Items.IRIDIUM_PLATE, Items.RAW_CARBON_MESH, Items.IRIDIUM_PLATE
+        });
+
+        registerArmor(plugin, 3, SuitItems.MK3_CHESTPLATE, new ItemStack[]{
+            Items.IRIDIUM_PLATE, MiscItems.SUIT_GENERATOR, Items.IRIDIUM_PLATE,
+            SlimefunItems.POWER_CRYSTAL, SuitItems.MK2_CHESTPLATE, SlimefunItems.POWER_CRYSTAL,
+            Items.IRIDIUM_PLATE, MiscItems.SUIT_GENERATOR, Items.IRIDIUM_PLATE
+        });
+
+        registerArmor(plugin, 3, SuitItems.MK3_LEGGINGS, new ItemStack[]{
+            Items.IRIDIUM_PLATE, MiscItems.SUIT_GENERATOR, Items.IRIDIUM_PLATE,
+            Items.RAW_CARBON_FIBRE, SuitItems.MK2_LEGGINGS, Items.RAW_CARBON_FIBRE,
+            Items.IRIDIUM_PLATE, Items.COPPER_CABLE, Items.IRIDIUM_PLATE
+        });
+
+        registerArmor(plugin, 3, SuitItems.MK3_BOOTS, new ItemStack[]{
+            Items.IRIDIUM_PLATE, MiscItems.SUIT_GENERATOR, Items.IRIDIUM_PLATE,
+            Items.ADVANCED_ALLOY, SuitItems.MK2_BOOTS, Items.ADVANCED_ALLOY,
             Items.IRIDIUM_PLATE, Items.ADVANCED_ALLOY, Items.IRIDIUM_PLATE
         });
     }
@@ -149,6 +174,8 @@ public class Setup {
             case 2:
                 new MK2SuitPiece(item, items).register(plugin);
                 break;
+            case 3:
+                new MK3SuitPiece(item, items).register(plugin);
         }
 
     }
