@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.inventory.ItemStack;
 
 public class FallHandler implements Listener {
 
@@ -19,8 +20,12 @@ public class FallHandler implements Listener {
         if ((e.getEntity() instanceof Player)) {
             if (e.getCause() != EntityDamageEvent.DamageCause.FALL) return;
             Player p = (Player) e.getEntity();
-            if (SuitUtils.hasModule(p.getInventory().getBoots(), ModuleType.NO_FALL_DMG)) {
-                e.setDamage(0);
+            ItemStack boots = p.getInventory().getBoots();
+            if (SuitUtils.hasModule(boots, ModuleType.NO_FALL_DMG)) {
+                if (SuitUtils.getCharge(boots) >= 5) {
+                    SuitUtils.removeCharge(boots, 5);
+                    e.setDamage(0);
+                }
             }
         }
     }

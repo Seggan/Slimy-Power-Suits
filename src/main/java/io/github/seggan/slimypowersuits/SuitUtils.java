@@ -23,7 +23,7 @@ public class SuitUtils {
     }
 
     public static List<ModuleType> getInstalledModules(ItemStack armor) {
-        if (armor == null) {
+        if (armor == null || !isPowerSuitPiece(armor)) {
             return new ArrayList<>();
         }
         ItemMeta meta = armor.getItemMeta();
@@ -59,5 +59,21 @@ public class SuitUtils {
             return;
         }
         ((Rechargeable) suitItem).addItemCharge(itemStack, ((SuitPiece) suitItem).getRechargeRate());
+    }
+
+    public static double getCharge(ItemStack itemStack) {
+        SlimefunItem suitItem = SlimefunItem.getByItem(itemStack);
+        if (!(suitItem instanceof SuitPiece)) {
+            return 0.0;
+        }
+        return ((Rechargeable) suitItem).getItemCharge(itemStack);
+    }
+
+    public static void removeCharge(ItemStack itemStack, int amount) {
+        SlimefunItem suitItem = SlimefunItem.getByItem(itemStack);
+        if (!(suitItem instanceof SuitPiece)) {
+            return;
+        }
+        ((Rechargeable) suitItem).removeItemCharge(itemStack, amount);
     }
 }

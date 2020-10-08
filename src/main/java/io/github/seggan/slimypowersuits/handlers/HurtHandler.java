@@ -53,8 +53,11 @@ public class HurtHandler implements Listener {
                                     SuitUtils.getInstalledModules(armorPiece),
                                     ModuleType.RESISTANCE
                                 );
-                                for (int i = 0; i < protModules; i++) {
-                                    percent += Math.floorDiv(100 - percent, 4);
+                                if (protModules > 0) {
+                                    SuitUtils.removeCharge(armorPiece, 1);
+                                    for (int i = 0; i < protModules; i++) {
+                                        percent += Math.floorDiv(100 - percent, 4);
+                                    }
                                 }
                             }
                         }

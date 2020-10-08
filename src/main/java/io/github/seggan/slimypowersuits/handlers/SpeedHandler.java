@@ -3,6 +3,7 @@ package io.github.seggan.slimypowersuits.handlers;
 import io.github.seggan.slimypowersuits.SlimyPowerSuits;
 import io.github.seggan.slimypowersuits.SuitUtils;
 import io.github.seggan.slimypowersuits.modules.ModuleType;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -25,18 +26,20 @@ public class SpeedHandler implements Listener {
         if (leggings == null || leggings.getType() == Material.AIR) {
             return;
         }
-        if (!SuitUtils.isPowerSuitPiece(leggings)) {
-            return;
-        }
         if (SuitUtils.getInstalledModules(leggings).contains(ModuleType.SPEED)) {
             if (e.isSprinting()) {
-                p.addPotionEffect(new PotionEffect(
-                    PotionEffectType.SPEED,
-                    Integer.MAX_VALUE,
-                    2,
-                    false,
-                    false
-                ));
+                if (SuitUtils.getCharge(leggings) >= 5) {
+                    p.addPotionEffect(new PotionEffect(
+                            PotionEffectType.SPEED,
+                            Integer.MAX_VALUE,
+                            2,
+                            false,
+                            false
+                    ));
+                    SuitUtils.removeCharge(leggings, 5);
+                } else {
+                    p.sendMessage(ChatColor.RED + "Not enough charge in your leggings!");
+                }
             } else {
                 p.removePotionEffect(PotionEffectType.SPEED);
             }

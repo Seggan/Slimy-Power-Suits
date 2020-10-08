@@ -3,6 +3,7 @@ package io.github.seggan.slimypowersuits.handlers;
 import io.github.seggan.slimypowersuits.SlimyPowerSuits;
 import io.github.seggan.slimypowersuits.SuitUtils;
 import io.github.seggan.slimypowersuits.modules.ModuleType;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
@@ -28,6 +29,11 @@ public class GlowingHandler implements Listener {
             return;
         }
         if (e.isSneaking() && SuitUtils.hasModule(helmet, ModuleType.GLOWING)) {
+            if (SuitUtils.getCharge(helmet) < 5) {
+                p.sendMessage(ChatColor.RED + "Not enough charge in your helmet!");
+                return;
+            }
+            SuitUtils.removeCharge(helmet, 5);
             for (Entity entity : p.getNearbyEntities(20, 20, 20)) {
                 if (entity instanceof LivingEntity) {
                     ((LivingEntity) entity).addPotionEffect(new PotionEffect(
