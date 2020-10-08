@@ -12,6 +12,7 @@ import io.github.seggan.slimypowersuits.lists.SuitItems;
 import io.github.seggan.slimypowersuits.modules.Module;
 import io.github.seggan.slimypowersuits.modules.ModuleType;
 import io.github.seggan.slimypowersuits.suits.MK1SuitPiece;
+import io.github.seggan.slimypowersuits.suits.MK2SuitPiece;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
@@ -102,6 +103,30 @@ public class Setup {
             Items.ADVANCED_ALLOY, SlimefunItems.HAZMAT_BOOTS, Items.ADVANCED_ALLOY,
             Items.IRIDIUM_PLATE, Items.ADVANCED_ALLOY, Items.IRIDIUM_PLATE
         });
+
+        registerArmor(plugin, 2, SuitItems.MK2_HELMET, new ItemStack[]{
+            Items.IRIDIUM_PLATE, MiscItems.SUIT_GENERATOR, Items.IRIDIUM_PLATE,
+            Items.ADVANCED_CIRCUIT, SlimefunItems.SCUBA_HELMET, Items.ADVANCED_CIRCUIT,
+            Items.IRIDIUM_PLATE, Items.RAW_CARBON_MESH, Items.IRIDIUM_PLATE
+        });
+
+        registerArmor(plugin, 2, SuitItems.MK2_CHESTPLATE, new ItemStack[]{
+            Items.IRIDIUM_PLATE, MiscItems.SUIT_GENERATOR, Items.IRIDIUM_PLATE,
+            SlimefunItems.POWER_CRYSTAL, SlimefunItems.HAZMAT_CHESTPLATE, SlimefunItems.POWER_CRYSTAL,
+            Items.IRIDIUM_PLATE, MiscItems.SUIT_GENERATOR, Items.IRIDIUM_PLATE
+        });
+
+        registerArmor(plugin, 2, SuitItems.MK2_LEGGINGS, new ItemStack[]{
+            Items.IRIDIUM_PLATE, MiscItems.SUIT_GENERATOR, Items.IRIDIUM_PLATE,
+            Items.RAW_CARBON_FIBRE, SlimefunItems.HAZMAT_LEGGINGS, Items.RAW_CARBON_FIBRE,
+            Items.IRIDIUM_PLATE, Items.COPPER_CABLE, Items.IRIDIUM_PLATE
+        });
+
+        registerArmor(plugin, 2, SuitItems.MK2_BOOTS, new ItemStack[]{
+            Items.IRIDIUM_PLATE, MiscItems.SUIT_GENERATOR, Items.IRIDIUM_PLATE,
+            Items.ADVANCED_ALLOY, SlimefunItems.HAZMAT_BOOTS, Items.ADVANCED_ALLOY,
+            Items.IRIDIUM_PLATE, Items.ADVANCED_ALLOY, Items.IRIDIUM_PLATE
+        });
     }
 
     public static void registerListeners(SlimyPowerSuits plugin) {
@@ -117,8 +142,14 @@ public class Setup {
     }
 
     private static void registerArmor(SlimyPowerSuits plugin, int mark, SlimefunItemStack item, ItemStack[] items) {
-        if (mark == 1) {
-            new MK1SuitPiece(item, items).register(plugin);
+        switch (mark) {
+            case 1:
+                new MK1SuitPiece(item, items).register(plugin);
+                break;
+            case 2:
+                new MK2SuitPiece(item, items).register(plugin);
+                break;
         }
+
     }
 }

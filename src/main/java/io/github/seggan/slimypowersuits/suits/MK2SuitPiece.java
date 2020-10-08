@@ -3,24 +3,24 @@ package io.github.seggan.slimypowersuits.suits;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.inventory.ItemStack;
 
-public class MK1SuitPiece extends SuitPiece {
+public class MK2SuitPiece extends SuitPiece {
 
-    public MK1SuitPiece(SlimefunItemStack item, ItemStack[] recipe) {
-        super(1, item, recipe,"power_suit_mk1");
+    public MK2SuitPiece(SlimefunItemStack item, ItemStack[] recipe) {
+        super(2, item, recipe, "power_suit_mk2");
     }
 
     @Override
     public int getModuleCapacity() {
-        return 1;
+        return 2;
     }
 
     @Override
     public int getRechargeRate() {
-        return 1;
+        return 3;
     }
 
     @Override
     public float getMaxItemCharge(ItemStack itemStack) {
-        return 10;
+        return 25;
     }
 }

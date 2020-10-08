@@ -24,6 +24,7 @@ public abstract class SuitPiece extends SlimefunArmorPiece implements Protective
     }
 
     public abstract int getModuleCapacity();
+    public abstract int getRechargeRate();
 
     @Override
     public boolean isFullSetRequired() {
@@ -49,20 +50,6 @@ public abstract class SuitPiece extends SlimefunArmorPiece implements Protective
         if (!(suitItem instanceof SuitPiece)) {
             return;
         }
-        int charge = 0;
-        switch (((SuitPiece) suitItem).getMark()) {
-            case 1:
-                charge = 1;
-                break;
-            case 2:
-                charge = 3;
-                break;
-            case 3:
-                charge = 8;
-                break;
-            default:
-                return;
-        }
-        ((Rechargeable) suitItem).addItemCharge(itemStack, charge);
+        ((Rechargeable) suitItem).addItemCharge(itemStack, ((SuitPiece) suitItem).getRechargeRate());
     }
 }

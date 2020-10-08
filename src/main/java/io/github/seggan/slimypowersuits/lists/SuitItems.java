@@ -54,4 +54,52 @@ public class SuitItems {
             LoreBuilder.powerCharged(0, 10),
             "&7Installed modules:"
     );
+    public static final SlimefunItemStack MK2_HELMET = new SlimefunItemStack(
+        "POWER_SUIT_HELMET_MK2",
+        Material.LEATHER_HELMET, Color.GRAY,
+        "&4Power Suit Helmet Mark 2",
+        "",
+        "&7A powerful piece of armor",
+        "&7that is designed to be modified.",
+        "&7Slots: 2",
+        LoreBuilder.powerPerSecond(3),
+        LoreBuilder.powerCharged(0, 25),
+        "&7Installed modules:"
+    );
+    public static final SlimefunItemStack MK2_CHESTPLATE = new SlimefunItemStack(
+        "POWER_SUIT_CHESTPLATE_MK2",
+        Material.LEATHER_CHESTPLATE, Color.GRAY,
+        "&4Power Suit Chestplate Mark 2",
+        "",
+        "&7A powerful piece of armor",
+        "&7that is designed to be modified.",
+        "&7Body/Arm slots: 2",
+        LoreBuilder.powerPerSecond(3),
+        LoreBuilder.powerCharged(0, 25),
+        "&7Installed modules:"
+    );
+    public static final SlimefunItemStack MK2_LEGGINGS = new SlimefunItemStack(
+        "POWER_SUIT_LEGGINGS_MK2",
+        Material.LEATHER_LEGGINGS, Color.GRAY,
+        "&4Power Suit Leggings Mark 2",
+        "",
+        "&7A powerful piece of armor",
+        "&7that is designed to be modified.",
+        "&7Slots: 2",
+        LoreBuilder.powerPerSecond(3),
+        LoreBuilder.powerCharged(0, 25),
+        "&7Installed modules:"
+    );
+    public static final SlimefunItemStack MK2_BOOTS = new SlimefunItemStack(
+        "POWER_SUIT_BOOTS_MK2",
+        Material.LEATHER_BOOTS, Color.GRAY,
+        "&4Power Suit Boots Mark 2",
+        "",
+        "&7A powerful piece of armor",
+        "&7that is designed to be modified.",
+        "&7Slots: 2",
+        LoreBuilder.powerPerSecond(3),
+        LoreBuilder.powerCharged(0, 25),
+        "&7Installed modules:"
+    );
 }
