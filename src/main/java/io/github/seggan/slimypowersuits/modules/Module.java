@@ -16,6 +16,6 @@ public class Module extends SlimefunItem implements NotPlaceable {
 
     public ModuleType getEffect() {
         return effect;
-    };
+    }
 
 }

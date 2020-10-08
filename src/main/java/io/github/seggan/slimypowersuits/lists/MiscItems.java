@@ -12,7 +12,11 @@ import org.bukkit.NamespacedKey;
 
 
 public final class MiscItems {
+
     public static final String MODULE_TEXTURE = "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGZlYjM5ZDcxZWY4ZTZhNDI2NDY1OTMzOTNhNTc1M2NlMjZhMWJlZTI3YTBjYThhMzJjYjYzN2IxZmZhZSJ9fX0=";
+
+    private MiscItems() {}
+
     public static final Category SUITS = new Category(
             new NamespacedKey(SlimyPowerSuits.getInstance(), "SLIMY_POWER_SUITS"),
             new CustomItem(Material.IRON_CHESTPLATE, "&7Slimy Power Suits")

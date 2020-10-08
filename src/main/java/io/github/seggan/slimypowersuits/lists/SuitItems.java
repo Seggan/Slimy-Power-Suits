@@ -6,6 +6,9 @@ import org.bukkit.Color;
 import org.bukkit.Material;
 
 public class SuitItems {
+
+    private SuitItems() {}
+
     public static final SlimefunItemStack MK1_HELMET = new SlimefunItemStack(
             "POWER_SUIT_HELMET_MK1",
             Material.LEATHER_HELMET, Color.WHITE,

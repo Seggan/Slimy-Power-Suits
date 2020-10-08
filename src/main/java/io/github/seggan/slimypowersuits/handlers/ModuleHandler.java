@@ -23,7 +23,7 @@ public class ModuleHandler implements Listener {
 
     @EventHandler
     public void onModuleInteract(PlayerInteractEvent e) {
-        if (!(e.getAction() == Action.LEFT_CLICK_BLOCK)) {
+        if (e.getAction() != Action.LEFT_CLICK_BLOCK) {
             return;
         }
         PlayerInventory inv = e.getPlayer().getInventory();
@@ -48,7 +48,7 @@ public class ModuleHandler implements Listener {
                 inv.setItemInMainHand(mainHand);
             }
         } else {
-            if (SuitUtils.getInstalledModules(lore).size() > 0) {
+            if (!SuitUtils.getInstalledModules(lore).isEmpty()) {
                 ModuleType effect = ModuleType.getByName(ModuleHandler.pop(lore));
                 inv.addItem(SlimefunItem.getByID(effect.getId()).getItem());
                 meta.setLore(lore);
@@ -79,6 +79,7 @@ public class ModuleHandler implements Listener {
             ItemMeta meta = suit.getItemMeta();
             List<String> lore = meta.getLore();
             if (otherItem instanceof Module) {
+                String EMPTY_MODULE = "EMPTY_MODULE";
                 e.setCancelled(true);
                 SlimefunItem item = SlimefunItem.getByItem(suit);
                 int capacity = ((SuitPiece) item).getModuleCapacity();
@@ -91,16 +92,16 @@ public class ModuleHandler implements Listener {
                     e.setCurrentItem(suit);
                     other.setAmount(other.getAmount() - 1);
                     e.getWhoClicked().setItemOnCursor(other);
-                    inv.addItem(SlimefunItem.getByID("EMPTY_MODULE").getItem());
-                } else if (otherItem.getID().equals("EMPTY_MODULE")) {
+                    inv.addItem(SlimefunItem.getByID(EMPTY_MODULE).getItem());
+                } else if (otherItem.getID().equals(EMPTY_MODULE)) {
                     e.setCancelled(true);
-                    if (SuitUtils.getInstalledModules(lore).size() > 0) {
+                    if (!SuitUtils.getInstalledModules(lore).isEmpty()) {
                         ModuleType effect = ModuleType.getByName(ModuleHandler.pop(lore));
                         inv.addItem(SlimefunItem.getByID(effect.getId()).getItem());
                         meta.setLore(lore);
                         suit.setItemMeta(meta);
                         e.setCurrentItem(suit);
-                        e.getWhoClicked().setItemOnCursor(SlimefunItem.getByID("EMPTY_MODULE").getItem());
+                        e.getWhoClicked().setItemOnCursor(SlimefunItem.getByID(EMPTY_MODULE).getItem());
                     }
                 }
             }
