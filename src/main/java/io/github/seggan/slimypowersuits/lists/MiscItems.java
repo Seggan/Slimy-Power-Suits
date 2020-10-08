@@ -82,7 +82,8 @@ public final class MiscItems {
             "",
             "These built in reaction wheels",
             "increase your speed when you",
-            "sprint. Install on leggings."
+            "sprint. Install on leggings.",
+            "5 J to initiate"
     );
 
     public static final SlimefunItemStack FEATHER_MODULE = new SlimefunItemStack(
@@ -92,7 +93,8 @@ public final class MiscItems {
             "",
             "A specially designed nanofiber",
             "cushion to protect you from any",
-            "fall. Install on boots."
+            "fall. Install on boots.",
+            "5 J/fall"
     );
 
     public static final SlimefunItemStack RESISTANCE_MODULE = new SlimefunItemStack(
@@ -102,18 +104,20 @@ public final class MiscItems {
             "",
             "A light but strong alloy to",
             "protect you when battling.",
-            "Install anywhere."
+            "Install anywhere.",
+            "1 J/hit"
     );
 
     public static final SlimefunItemStack GLOWING_MODULE = new SlimefunItemStack(
-        "GLOWING_MODULE",
-        MODULE_TEXTURE,
-        "Entity Scanner",
-        "",
-        "This disperser-lens combo",
-        "spreads glowstone dust onto",
-        "any nearby entities. Install",
-        "on helmet.",
-        LoreBuilder.CROUCH_TO_USE
+            "GLOWING_MODULE",
+            MODULE_TEXTURE,
+            "Entity Scanner",
+            "",
+            "This disperser-lens combo",
+            "spreads glowstone dust onto",
+            "any nearby entities. Install",
+            "on helmet.",
+            "5 J/scan",
+            LoreBuilder.CROUCH_TO_USE
     );
 }

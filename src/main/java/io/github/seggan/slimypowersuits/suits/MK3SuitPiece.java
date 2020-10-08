@@ -6,7 +6,7 @@ import org.bukkit.inventory.ItemStack;
 public class MK3SuitPiece extends SuitPiece {
 
     public MK3SuitPiece(SlimefunItemStack item, ItemStack[] recipe) {
-        super(3, item, recipe, "power_suit_mk3");
+        super(item, recipe, "power_suit_mk3");
     }
 
     @Override

@@ -2,6 +2,7 @@ package io.github.seggan.slimypowersuits;
 
 import io.github.seggan.slimypowersuits.modules.ModuleType;
 import io.github.seggan.slimypowersuits.suits.SuitPiece;
+import io.github.thebusybiscuit.slimefun4.core.attributes.Rechargeable;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -50,5 +51,13 @@ public class SuitUtils {
         } else {
             return false;
         }
+    }
+
+    public static void charge(ItemStack itemStack) {
+        SlimefunItem suitItem = SlimefunItem.getByItem(itemStack);
+        if (!(suitItem instanceof SuitPiece)) {
+            return;
+        }
+        ((Rechargeable) suitItem).addItemCharge(itemStack, ((SuitPiece) suitItem).getRechargeRate());
     }
 }

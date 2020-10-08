@@ -2,7 +2,6 @@ package io.github.seggan.slimypowersuits;
 
 import io.github.seggan.slimypowersuits.lists.MiscItems;
 import io.github.seggan.slimypowersuits.modules.ModuleType;
-import io.github.seggan.slimypowersuits.suits.SuitPiece;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import me.mrCookieSlime.Slimefun.cscorelib2.updater.GitHubBuildsUpdater;
 import org.bstats.bukkit.Metrics;
@@ -65,22 +64,22 @@ public class SlimyPowerSuits extends JavaPlugin implements SlimefunAddon {
 
             ItemStack item = inv.getHelmet();
             if (SuitUtils.isPowerSuitPiece(item)) {
-                SuitPiece.charge(item);
+                SuitUtils.charge(item);
                 List<ModuleType> modules = SuitUtils.getInstalledModules(item.getItemMeta().getLore());
             }
             item = inv.getChestplate();
             if (SuitUtils.isPowerSuitPiece(item)) {
-                SuitPiece.charge(item);
+                SuitUtils.charge(item);
                 List<ModuleType> modules = SuitUtils.getInstalledModules(item.getItemMeta().getLore());
             }
             item = inv.getLeggings();
             if (SuitUtils.isPowerSuitPiece(item)) {
-                SuitPiece.charge(item);
+                SuitUtils.charge(item);
                 List<ModuleType> modules = SuitUtils.getInstalledModules(item.getItemMeta().getLore());
             }
             item = inv.getBoots();
             if (SuitUtils.isPowerSuitPiece(item)) {
-                SuitPiece.charge(item);
+                SuitUtils.charge(item);
                 List<ModuleType> modules = SuitUtils.getInstalledModules(item.getItemMeta().getLore());
             }
         }

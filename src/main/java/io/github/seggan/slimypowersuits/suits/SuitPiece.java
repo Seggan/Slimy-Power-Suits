@@ -7,20 +7,17 @@ import io.github.thebusybiscuit.slimefun4.core.attributes.ProtectiveArmor;
 import io.github.thebusybiscuit.slimefun4.core.attributes.Rechargeable;
 import io.github.thebusybiscuit.slimefun4.implementation.items.armor.SlimefunArmorPiece;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 
 public abstract class SuitPiece extends SlimefunArmorPiece implements ProtectiveArmor, Rechargeable {
     private final NamespacedKey key;
-    private final int mark;
 
-    public SuitPiece(int mark, SlimefunItemStack item, ItemStack[] recipe, String key) {
+    public SuitPiece(SlimefunItemStack item, ItemStack[] recipe, String key) {
         super(MiscItems.SUITS, item, RecipeType.ARMOR_FORGE, recipe, null);
 
         this.key = new NamespacedKey(SlimyPowerSuits.getInstance(), key);
-        this.mark = mark;
     }
 
     public abstract int getModuleCapacity();
@@ -41,15 +38,4 @@ public abstract class SuitPiece extends SlimefunArmorPiece implements Protective
         return key;
     }
 
-    public int getMark() {
-        return mark;
-    }
-
-    public static void charge(ItemStack itemStack) {
-        SlimefunItem suitItem = SlimefunItem.getByItem(itemStack);
-        if (!(suitItem instanceof SuitPiece)) {
-            return;
-        }
-        ((Rechargeable) suitItem).addItemCharge(itemStack, ((SuitPiece) suitItem).getRechargeRate());
-    }
 }
