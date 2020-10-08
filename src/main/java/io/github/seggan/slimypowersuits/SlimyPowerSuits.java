@@ -15,7 +15,9 @@ import org.bukkit.scheduler.BukkitRunnable;
 import java.util.List;
 
 public class SlimyPowerSuits extends JavaPlugin implements SlimefunAddon {
+
     private static SlimyPowerSuits instance = null;
+
     @Override
     public void onEnable() {
         getLogger().info("Slimy Power Suits enabled.");
@@ -56,7 +58,6 @@ public class SlimyPowerSuits extends JavaPlugin implements SlimefunAddon {
     public static SlimyPowerSuits getInstance() {
         return instance;
     }
-
 
     private void runArmorTask() {
         for (Player p : getServer().getOnlinePlayers()) {

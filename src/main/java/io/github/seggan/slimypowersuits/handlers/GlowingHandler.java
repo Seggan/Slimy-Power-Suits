@@ -27,19 +27,17 @@ public class GlowingHandler implements Listener {
         if (helmet == null || helmet.getType() == Material.AIR) {
             return;
         }
-        if (SuitUtils.hasModule(helmet, ModuleType.GLOWING)) {
-            if (e.isSneaking()) {
-                for (Entity entity : p.getNearbyEntities(20, 20, 20)) {
-                    if (entity instanceof LivingEntity) {
-                        ((LivingEntity) entity).addPotionEffect(new PotionEffect(
-                            PotionEffectType.GLOWING,
-                            100,
-                            0,
-                            false,
-                            false,
-                            false
-                        ));
-                    }
+        if (e.isSneaking() && SuitUtils.hasModule(helmet, ModuleType.GLOWING)) {
+            for (Entity entity : p.getNearbyEntities(20, 20, 20)) {
+                if (entity instanceof LivingEntity) {
+                    ((LivingEntity) entity).addPotionEffect(new PotionEffect(
+                        PotionEffectType.GLOWING,
+                        100,
+                        0,
+                        false,
+                        false,
+                        false
+                    ));
                 }
             }
         }

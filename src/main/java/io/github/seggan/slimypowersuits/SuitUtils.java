@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SuitUtils {
+
+    private SuitUtils() {}
+
     public static List<ModuleType> getInstalledModules(List<String> lore) {
         List<ModuleType> modules = new ArrayList<>();
         for (String moduleString : lore.subList(7, lore.size())) {

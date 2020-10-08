@@ -17,7 +17,7 @@ public class FallHandler implements Listener {
     @EventHandler
     public void onPlayerFall(EntityDamageEvent e) {
         if ((e.getEntity() instanceof Player)) {
-            if (!(e.getCause() == EntityDamageEvent.DamageCause.FALL)) return;
+            if (e.getCause() != EntityDamageEvent.DamageCause.FALL) return;
             Player p = (Player) e.getEntity();
             if (SuitUtils.hasModule(p.getInventory().getBoots(), ModuleType.NO_FALL_DMG)) {
                 e.setDamage(0);
