@@ -4,6 +4,7 @@ import io.github.seggan.slimypowersuits.SlimyPowerSuits;
 import io.github.thebusybiscuit.slimefun4.core.attributes.MachineTier;
 import io.github.thebusybiscuit.slimefun4.core.attributes.MachineType;
 import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
+import me.mrCookieSlime.CSCoreLibPlugin.cscorelib2.item.CustomItem;
 import me.mrCookieSlime.CSCoreLibPlugin.cscorelib2.skull.SkullItem;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
@@ -19,7 +20,7 @@ public final class MiscItems {
 
     public static final Category SUITS = new Category(
             new NamespacedKey(SlimyPowerSuits.getInstance(), "SLIMY_POWER_SUITS"),
-            SkullItem.fromBase64("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODA2ZmNhNWY4ZTRlNjg3ZTg3MzQ5N2Y3Y2NiY2I4MTFlODE2ZGNkOGM3MTcyM2Q0ZGE2NzgwNzRmYTcxMTdhOCJ9fX0")
+            new CustomItem(SkullItem.fromBase64("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODA2ZmNhNWY4ZTRlNjg3ZTg3MzQ5N2Y3Y2NiY2I4MTFlODE2ZGNkOGM3MTcyM2Q0ZGE2NzgwNzRmYTcxMTdhOCJ9fX0"), "Slimy Power Suits")
     );
 
     public static final SlimefunItemStack SUIT_AI = new SlimefunItemStack(
@@ -123,5 +124,19 @@ public final class MiscItems {
             "on helmet.",
             "5 J/scan",
             LoreBuilder.CROUCH_TO_USE
+    );
+
+    public static final SlimefunItemStack ATTRACTOR_MODULE = new SlimefunItemStack(
+            "ATTRACTOR_MODULE",
+            MODULE_TEXTURE,
+            "Attractor Beam",
+            "",
+            "Created in a failed",
+            "experiment to create",
+            "repulsor beams, this",
+            "attractor beam may come",
+            "in handy when fighting.",
+            "25 J/use",
+            LoreBuilder.RIGHT_CLICK_TO_USE
     );
 }

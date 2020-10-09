@@ -7,7 +7,7 @@ public enum ModuleType {
     NIGHT_VISION("Night Vision Lenses", ""),
     GLOWING("Entity Scanner", "GLOWING_MODULE"),
     STRENGTH("Integrated Hydraulics", ""),
-    KNOCKBACK("Repulsor Beams", ""),
+    ATTRACTION("Repulsor Beam", "ATTRACTOR_MODULE"),
     SPEED("Inbuilt Reaction Wheels", "SPEED_MODULE");
 
     private final String id;
