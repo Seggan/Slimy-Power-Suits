@@ -5,6 +5,9 @@
 - Life Support: Self contained hospital anyone?
 - Bionic hydraulics: Think again...
 
+## Build 7:
+- Fixed typos
+
 ## Build 6:
 - Mark 2 suit
 - Mark 3 suit

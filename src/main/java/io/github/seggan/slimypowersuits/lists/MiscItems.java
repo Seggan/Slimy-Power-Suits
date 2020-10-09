@@ -136,6 +136,7 @@ public final class MiscItems {
             "repulsor beams, this",
             "attractor beam may come",
             "in handy when fighting.",
+            "Install on chestplate.",
             "25 J/use",
             LoreBuilder.RIGHT_CLICK_TO_USE
     );
