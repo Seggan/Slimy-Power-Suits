@@ -1,6 +1,8 @@
 package io.github.seggan.slimypowersuits.machines;
 
+import io.github.seggan.slimypowersuits.SlimyPowerSuits;
 import io.github.seggan.slimypowersuits.Utils;
+import io.github.seggan.slimypowersuits.lists.MiscItems;
 import io.github.thebusybiscuit.slimefun4.core.multiblocks.MultiBlockMachine;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 import io.github.thebusybiscuit.slimefun4.libraries.paperlib.PaperLib;
@@ -12,6 +14,7 @@ import me.mrCookieSlime.Slimefun.api.Slimefun;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.cscorelib2.inventory.ItemUtils;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
@@ -36,6 +39,13 @@ import java.util.List;
  * @author NCBPFluffyBear
  */
 public class ElementForge extends MultiBlockMachine {
+
+    public static final RecipeType ELEMENT_FORGE_RECIPE = new RecipeType(
+        new NamespacedKey(SlimyPowerSuits.getInstance(), "element_forge_recipe"),
+        MiscItems.ELEMENT_FORGE,
+        "&cElement Forge",
+        "&7Used to create new elements"
+    );
 
     public ElementForge(Category category, SlimefunItemStack item) {
         super(category, item, new ItemStack[] {

@@ -19,7 +19,6 @@ import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 
 public class Setup {
@@ -28,9 +27,8 @@ public class Setup {
 
         new ElementForge(MiscItems.SUITS, MiscItems.ELEMENT_FORGE).register(plugin);
 
-        RecipeType ELEMENT_FORGE_RECIPE = new RecipeType(new NamespacedKey(SlimyPowerSuits.getInstance(), "element_forge_recipe"), MiscItems.ELEMENT_FORGE, "&cElement Forge", "&7Used to create powerful items");
         // Register items
-        registerBasicItem(plugin, MiscItems.UNPATENTABLIUM, ELEMENT_FORGE_RECIPE, new ItemStack[]{
+        registerBasicItem(plugin, MiscItems.UNPATENTABLIUM, ElementForge.ELEMENT_FORGE_RECIPE, new ItemStack[]{
             Items.MAG_THOR, Items.UU_MATTER, Items.MAG_THOR,
             Items.UU_MATTER, Items.IRIDIUM, Items.UU_MATTER,
             Items.MAG_THOR, Items.UU_MATTER, Items.MAG_THOR
