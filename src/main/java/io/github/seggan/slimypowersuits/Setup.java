@@ -101,6 +101,12 @@ public class Setup {
                 Items.ADVANCED_ALLOY, Items.MAG_THOR, Items.ADVANCED_ALLOY
         }, ModuleType.STRENGTH).register(plugin);
 
+        new Module(MiscItems.FLYING_MODULE, new ItemStack[]{
+                Items.ADVANCED_ALLOY, Items.MAG_THOR, Items.ADVANCED_ALLOY,
+                SlimefunItems.STEEL_THRUSTER, MiscItems.EMPTY_MODULE, SlimefunItems.STEEL_THRUSTER,
+                Items.ADVANCED_ALLOY, Items.MAG_THOR, Items.ADVANCED_ALLOY
+        }, ModuleType.FLIGHT).register(plugin);
+
         // register suits
         registerArmor(plugin, 1, SuitItems.MK1_HELMET, new ItemStack[]{
             Items.IRIDIUM_PLATE, MiscItems.SUIT_GENERATOR, Items.IRIDIUM_PLATE,

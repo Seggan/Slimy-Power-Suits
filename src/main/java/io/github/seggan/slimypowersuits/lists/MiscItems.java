@@ -162,4 +162,15 @@ public final class MiscItems {
             "Install on chestplate.",
             "1 J/s"
     );
+
+    public static final SlimefunItemStack FLYING_MODULE = new SlimefunItemStack(
+            "FLIGHT_MODULE",
+            MODULE_TEXTURE,
+            "Miniaturized Jets",
+            "",
+            "Miniaturized jets can",
+            "allow you to fly.",
+            "Install on boots.",
+            "5 J/s while flying"
+    );
 }

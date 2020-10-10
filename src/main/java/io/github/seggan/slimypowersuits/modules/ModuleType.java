@@ -9,7 +9,8 @@ public enum ModuleType {
     STRENGTH("Integrated Hydraulics", "STRENGTH_MODULE"),
     ATTRACTION("Attractor Beam", "ATTRACTOR_MODULE"),
     SPEED("Inbuilt Reaction Wheels", "SPEED_MODULE"),
-    REGENERATION("Life Support Systems", "REGENERATION_MODULE");
+    REGENERATION("Life Support Systems", "REGENERATION_MODULE"),
+    FLIGHT("Miniaturized Jets", "FLIGHT_MODULE");
 
     private final String id;
     private final String name;

@@ -13,11 +13,15 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.UUID;
 
 public class SlimyPowerSuits extends JavaPlugin implements SlimefunAddon {
 
     private static SlimyPowerSuits instance = null;
+    private static final Set<UUID> flying = new HashSet<>();
 
     @Override
     public void onEnable() {
@@ -70,6 +74,8 @@ public class SlimyPowerSuits extends JavaPlugin implements SlimefunAddon {
         for (Player p : getServer().getOnlinePlayers()) {
             PlayerInventory inv = p.getInventory();
 
+
+
             ItemStack item = inv.getHelmet();
             if (SuitUtils.isPowerSuitPiece(item)) {
                 SuitUtils.charge(item);
@@ -107,10 +113,22 @@ public class SlimyPowerSuits extends JavaPlugin implements SlimefunAddon {
                 SuitUtils.charge(item);
                 List<ModuleType> modules = SuitUtils.getInstalledModules(item);
             }
+            UUID uuid = p.getUniqueId();
             item = inv.getBoots();
+            if (!SuitUtils.hasModule(item, ModuleType.FLIGHT)
+                    && flying.contains(uuid) && !p.isOp()) {
+                p.setAllowFlight(false);
+                flying.remove(uuid);
+            }
             if (SuitUtils.isPowerSuitPiece(item)) {
                 SuitUtils.charge(item);
                 List<ModuleType> modules = SuitUtils.getInstalledModules(item);
+                if (modules.contains(ModuleType.FLIGHT)) {
+                    if (!p.getAllowFlight()) {
+                        p.setAllowFlight(true);
+                        flying.add(uuid);
+                    }
+                }
             }
         }
     }
