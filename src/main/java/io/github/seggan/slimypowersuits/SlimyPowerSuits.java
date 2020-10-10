@@ -9,6 +9,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.List;
@@ -27,6 +29,12 @@ public class SlimyPowerSuits extends JavaPlugin implements SlimefunAddon {
 
         if (getDescription().getVersion().startsWith("DEV - ")) {
             new GitHubBuildsUpdater(this, getFile(), "Seggan/Slimy-Power-Suits/master").start();
+        }
+
+        if (!getServer().getPluginManager().isPluginEnabled("LiteXpansion")) {
+            getLogger().info("Hmm, LiteXpansion is disabled. Disabling Slimy Power Suits");
+            getPluginLoader().disablePlugin(this);
+            return;
         }
 
         Setup.registerListeners(this);
@@ -65,22 +73,44 @@ public class SlimyPowerSuits extends JavaPlugin implements SlimefunAddon {
             ItemStack item = inv.getHelmet();
             if (SuitUtils.isPowerSuitPiece(item)) {
                 SuitUtils.charge(item);
-                List<ModuleType> modules = SuitUtils.getInstalledModules(item.getItemMeta().getLore());
+                List<ModuleType> modules = SuitUtils.getInstalledModules(item);
             }
             item = inv.getChestplate();
             if (SuitUtils.isPowerSuitPiece(item)) {
                 SuitUtils.charge(item);
-                List<ModuleType> modules = SuitUtils.getInstalledModules(item.getItemMeta().getLore());
+                List<ModuleType> modules = SuitUtils.getInstalledModules(item);
+                if (modules.contains(ModuleType.REGENERATION)) {
+                    p.addPotionEffect(new PotionEffect(
+                            PotionEffectType.REGENERATION,
+                            21,
+                            3,
+                            false,
+                            false,
+                            false
+                    ));
+                    SuitUtils.removeCharge(item, 1);
+                }
+                if (modules.contains(ModuleType.STRENGTH)) {
+                    p.addPotionEffect(new PotionEffect(
+                            PotionEffectType.INCREASE_DAMAGE,
+                            21,
+                            1,
+                            false,
+                            false,
+                            false
+                    ));
+                    SuitUtils.removeCharge(item, 1);
+                }
             }
             item = inv.getLeggings();
             if (SuitUtils.isPowerSuitPiece(item)) {
                 SuitUtils.charge(item);
-                List<ModuleType> modules = SuitUtils.getInstalledModules(item.getItemMeta().getLore());
+                List<ModuleType> modules = SuitUtils.getInstalledModules(item);
             }
             item = inv.getBoots();
             if (SuitUtils.isPowerSuitPiece(item)) {
                 SuitUtils.charge(item);
-                List<ModuleType> modules = SuitUtils.getInstalledModules(item.getItemMeta().getLore());
+                List<ModuleType> modules = SuitUtils.getInstalledModules(item);
             }
         }
     }

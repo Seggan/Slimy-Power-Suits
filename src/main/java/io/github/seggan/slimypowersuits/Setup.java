@@ -89,6 +89,18 @@ public class Setup {
                 new ItemStack(Material.STICK), MiscItems.SUIT_AI, new ItemStack(Material.STICK)
         }, ModuleType.ATTRACTION).register(plugin);
 
+        new Module(MiscItems.REGENERATION_MODULE, new ItemStack[]{
+                SlimefunItems.ESSENCE_OF_AFTERLIFE, MiscItems.SUIT_AI, SlimefunItems.ESSENCE_OF_AFTERLIFE,
+                Items.RAW_CARBON_MESH, MiscItems.EMPTY_MODULE, Items.RAW_CARBON_MESH,
+                SlimefunItems.ESSENCE_OF_AFTERLIFE, MiscItems.SUIT_AI, SlimefunItems.ESSENCE_OF_AFTERLIFE
+        }, ModuleType.REGENERATION).register(plugin);
+
+        new Module(MiscItems.STRENGTH_MODULE, new ItemStack[]{
+                Items.ADVANCED_ALLOY, Items.MAG_THOR, Items.ADVANCED_ALLOY,
+                new ItemStack(Material.WATER_BUCKET), MiscItems.EMPTY_MODULE, new ItemStack(Material.WATER_BUCKET),
+                Items.ADVANCED_ALLOY, Items.MAG_THOR, Items.ADVANCED_ALLOY
+        }, ModuleType.STRENGTH).register(plugin);
+
         // register suits
         registerArmor(plugin, 1, SuitItems.MK1_HELMET, new ItemStack[]{
             Items.IRIDIUM_PLATE, MiscItems.SUIT_GENERATOR, Items.IRIDIUM_PLATE,

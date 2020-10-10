@@ -6,10 +6,10 @@ public enum ModuleType {
     RESISTANCE("Kinetic Reactive Alloy", "RESISTANCE_MODULE"),
     NIGHT_VISION("Night Vision Lenses", ""),
     GLOWING("Entity Scanner", "GLOWING_MODULE"),
-    STRENGTH("Integrated Hydraulics", ""),
+    STRENGTH("Integrated Hydraulics", "STRENGTH_MODULE"),
     ATTRACTION("Attractor Beam", "ATTRACTOR_MODULE"),
     SPEED("Inbuilt Reaction Wheels", "SPEED_MODULE"),
-    REGENERATION("Life Support", "REGENERATION_MODULE");
+    REGENERATION("Life Support Systems", "REGENERATION_MODULE");
 
     private final String id;
     private final String name;

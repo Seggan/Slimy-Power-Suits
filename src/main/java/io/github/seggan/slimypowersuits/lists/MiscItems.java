@@ -83,7 +83,7 @@ public final class MiscItems {
     public static final SlimefunItemStack SPEED_MODULE = new SlimefunItemStack(
             "SPEED_MODULE",
             MODULE_TEXTURE,
-            "Builtin Reaction Wheel Module",
+            "Builtin Reaction Wheels",
             "",
             "These built in reaction wheels",
             "increase your speed when you",
@@ -94,7 +94,7 @@ public final class MiscItems {
     public static final SlimefunItemStack FEATHER_MODULE = new SlimefunItemStack(
             "FEATHER_FALLING_MODULE",
             MODULE_TEXTURE,
-            "Nanofiber Cushion Module",
+            "Nanofiber Cushion",
             "",
             "A specially designed nanofiber",
             "cushion to protect you from any",
@@ -105,7 +105,7 @@ public final class MiscItems {
     public static final SlimefunItemStack RESISTANCE_MODULE = new SlimefunItemStack(
             "RESISTANCE_MODULE",
             MODULE_TEXTURE,
-            "Kinetic Reactive Alloy Module",
+            "Kinetic Reactive Alloy",
             "",
             "A light but strong alloy to",
             "protect you when battling.",
@@ -139,5 +139,27 @@ public final class MiscItems {
             "Install on chestplate.",
             "25 J/use",
             LoreBuilder.RIGHT_CLICK_TO_USE
+    );
+
+    public static final SlimefunItemStack REGENERATION_MODULE = new SlimefunItemStack(
+            "REGENERATION_MODULE",
+            MODULE_TEXTURE,
+            "Life Support Systems",
+            "",
+            "These life support systems",
+            "will regenerate your health.",
+            "Install on chestplate.",
+            "1 J/s"
+    );
+
+    public static final SlimefunItemStack STRENGTH_MODULE = new SlimefunItemStack(
+            "STRENGTH_MODULE",
+            MODULE_TEXTURE,
+            "Integrated Hydraulics",
+            "",
+            "Integrated hydraulics will",
+            "greatly aid you in battle.",
+            "Install on chestplate.",
+            "1 J/s"
     );
 }
