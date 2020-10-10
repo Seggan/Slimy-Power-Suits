@@ -1,7 +1,6 @@
 package io.github.seggan.slimypowersuits;
 
 import dev.j3fftw.litexpansion.Items;
-import dev.j3fftw.litexpansion.machine.MetalForge;
 import io.github.seggan.slimypowersuits.handlers.FallHandler;
 import io.github.seggan.slimypowersuits.handlers.GlowingHandler;
 import io.github.seggan.slimypowersuits.handlers.HurtHandler;
@@ -9,6 +8,7 @@ import io.github.seggan.slimypowersuits.handlers.ModuleHandler;
 import io.github.seggan.slimypowersuits.handlers.SpeedHandler;
 import io.github.seggan.slimypowersuits.lists.MiscItems;
 import io.github.seggan.slimypowersuits.lists.SuitItems;
+import io.github.seggan.slimypowersuits.machines.ElementForge;
 import io.github.seggan.slimypowersuits.modules.Module;
 import io.github.seggan.slimypowersuits.modules.ModuleType;
 import io.github.seggan.slimypowersuits.suits.MK1SuitPiece;
@@ -19,13 +19,18 @@ import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 
 public class Setup {
 
     static void registerItems(SlimyPowerSuits plugin) {
+
+        new ElementForge(MiscItems.SUITS, MiscItems.ELEMENT_FORGE).register(plugin);
+
+        RecipeType ELEMENT_FORGE_RECIPE = new RecipeType(new NamespacedKey(SlimyPowerSuits.getInstance(), "element_forge_recipe"), MiscItems.ELEMENT_FORGE, "&cElement Forge", "&7Used to create powerful items");
         // Register items
-        registerBasicItem(plugin, MiscItems.UNPATENTABLIUM, MetalForge.RECIPE_TYPE, new ItemStack[]{
+        registerBasicItem(plugin, MiscItems.UNPATENTABLIUM, ELEMENT_FORGE_RECIPE, new ItemStack[]{
             Items.MAG_THOR, Items.UU_MATTER, Items.MAG_THOR,
             Items.UU_MATTER, Items.IRIDIUM, Items.UU_MATTER,
             Items.MAG_THOR, Items.UU_MATTER, Items.MAG_THOR
