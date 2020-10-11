@@ -40,11 +40,7 @@ public class SuitUtils {
 
     public static boolean isPowerSuitPiece(ItemStack armor) {
         SlimefunItem item = SlimefunItem.getByItem(armor);
-        if (item != null) {
-            return item instanceof SuitPiece;
-        } else {
-            return false;
-        }
+        return item instanceof SuitPiece;
     }
 
     public static boolean hasModule(ItemStack armor, ModuleType module) {
