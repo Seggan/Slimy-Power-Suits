@@ -128,6 +128,14 @@ public class SlimyPowerSuits extends JavaPlugin implements SlimefunAddon {
                         p.setAllowFlight(true);
                         flying.add(uuid);
                     }
+                    if (p.isFlying()) {
+                        if (SuitUtils.getCharge(item) < 5) {
+                            p.setAllowFlight(false);
+                            flying.remove(uuid);
+                        } else {
+                            SuitUtils.removeCharge(item, 5);
+                        }
+                    }
                 }
             }
         }
