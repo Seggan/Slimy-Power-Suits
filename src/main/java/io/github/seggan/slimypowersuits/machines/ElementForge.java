@@ -7,6 +7,7 @@ import io.github.thebusybiscuit.slimefun4.core.multiblocks.MultiBlockMachine;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 import io.github.thebusybiscuit.slimefun4.libraries.paperlib.PaperLib;
 import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
+import jdk.nashorn.internal.objects.annotations.Getter;
 import me.mrCookieSlime.CSCoreLibPlugin.cscorelib2.item.CustomItem;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
@@ -30,7 +31,6 @@ import org.bukkit.inventory.ItemStack;
 import java.util.List;
 
 /**
- *
  * This is a multiblock machine for crafting
  * Slimy Power Suits materials.
  * Heavily influenced by the Enhanced Crafting Table
@@ -40,18 +40,23 @@ import java.util.List;
  */
 public class ElementForge extends MultiBlockMachine {
 
-    public static final RecipeType ELEMENT_FORGE_RECIPE = new RecipeType(
-        new NamespacedKey(SlimyPowerSuits.getInstance(), "element_forge_recipe"),
-        MiscItems.ELEMENT_FORGE,
-        "&cElement Forge",
-        "&7Used to create new elements"
-    );
+    @Getter
+    public static RecipeType getElementForgeRecipe() {
+        return new RecipeType(
+            new NamespacedKey(SlimyPowerSuits.getInstance(), "element_forge_recipe"),
+            MiscItems.ELEMENT_FORGE,
+            "&cElement Forge",
+            "&7Used to create new elements"
+        );
+    }
 
     public ElementForge(Category category, SlimefunItemStack item) {
         super(category, item, new ItemStack[] {
-            new ItemStack(Material.IRON_BLOCK), new CustomItem(Material.PISTON, "&fPiston &7(Facing Down)"), new ItemStack(Material.IRON_BLOCK),
+            new ItemStack(Material.IRON_BLOCK), new CustomItem(Material.PISTON, "&fPiston &7(Facing Down)"),
+            new ItemStack(Material.IRON_BLOCK),
             new ItemStack(Material.NETHER_BRICK_WALL), null, new ItemStack(Material.NETHER_BRICK_WALL),
-            new CustomItem(Material.HOPPER, "&fHopper &7(Facing Inwards)"), new ItemStack(Material.SMITHING_TABLE), new ItemStack(Material.DISPENSER)
+            new CustomItem(Material.HOPPER, "&fHopper &7(Facing Inwards)"), new ItemStack(Material.SMITHING_TABLE),
+            new ItemStack(Material.DISPENSER)
         }, BlockFace.UP);
     }
 
@@ -120,19 +125,18 @@ public class ElementForge extends MultiBlockMachine {
     }
 
     private Block locateDispenser(Block b) {
-        Block block = null;
 
         if (b.getRelative(1, 0, 0).getType() == Material.DISPENSER) {
-            block = b.getRelative(1, 0, 0);
+            return  b.getRelative(1, 0, 0);
         } else if (b.getRelative(0, 0, 1).getType() == Material.DISPENSER) {
-            block = b.getRelative(0, 0, 1);
+            return  b.getRelative(0, 0, 1);
         } else if (b.getRelative(-1, 0, 0).getType() == Material.DISPENSER) {
-            block = b.getRelative(-1, 0, 0);
+            return  b.getRelative(-1, 0, 0);
         } else if (b.getRelative(0, 0, -1).getType() == Material.DISPENSER) {
-            block = b.getRelative(0, 0, -1);
+            return  b.getRelative(0, 0, -1);
         }
 
-        return block;
+        return null;
     }
 
     private void movePiston(Block piston, Piston piss, boolean extended) {

@@ -23,6 +23,15 @@ public final class MiscItems {
             new CustomItem(SkullItem.fromBase64("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODA2ZmNhNWY4ZTRlNjg3ZTg3MzQ5N2Y3Y2NiY2I4MTFlODE2ZGNkOGM3MTcyM2Q0ZGE2NzgwNzRmYTcxMTdhOCJ9fX0"), "Slimy Power Suits")
     );
 
+    public static final SlimefunItemStack ELEMENT_FORGE = new SlimefunItemStack(
+        "ELEMENT_FORGE",
+        Material.SMITHING_TABLE,
+        "&cElement Forge",
+        "",
+        "&7Used to create new elements",
+        "&cMultiblock Structure"
+    );
+
     public static final SlimefunItemStack SUIT_AI = new SlimefunItemStack(
             "POWER_SUIT_AI",
             "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGM5MzY1NjQyYzZlZGRjZmVkZjViNWUxNGUyYmM3MTI1N2Q5ZTRhMzM2M2QxMjNjNmYzM2M1NWNhZmJmNmQifX19",

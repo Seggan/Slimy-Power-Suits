@@ -31,7 +31,7 @@ public class Setup {
         new ElementForge(MiscItems.SUITS, MiscItems.ELEMENT_FORGE).register(plugin);
 
         // Register items
-        registerBasicItem(plugin, MiscItems.UNPATENTABLIUM, ElementForge.ELEMENT_FORGE_RECIPE, new ItemStack[]{
+        registerBasicItem(plugin, MiscItems.UNPATENTABLIUM, ElementForge.getElementForgeRecipe(), new ItemStack[]{
             Items.MAG_THOR, Items.UU_MATTER, Items.MAG_THOR,
             Items.UU_MATTER, Items.IRIDIUM, Items.UU_MATTER,
             Items.MAG_THOR, Items.UU_MATTER, Items.MAG_THOR
