@@ -1,9 +1,13 @@
 ## Upcoming:
 - Repulsor Beams: Who needs walking sticks anyway?
-- Miniaturized Jets: Dude, I can see my house from here!
 - Heat Sink: My hot tub is filled with lava.
-- Life Support: Self contained hospital anyone?
-- Bionic hydraulics: Think again...
+
+## Build 8:
+- Added Mini Jets
+- Added Integrated Hydraulics
+- Added Life Support Systems
+- Added Heat Sink
+- Added Element Forge
 
 ## Build 7:
 - Fixed typos
