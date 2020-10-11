@@ -10,14 +10,18 @@ import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 public abstract class SuitPiece extends SlimefunArmorPiece implements ProtectiveArmor, Rechargeable {
     private final NamespacedKey key;
 
-    public SuitPiece(SlimefunItemStack item, ItemStack[] recipe, String key) {
+    protected SuitPiece(SlimefunItemStack item, ItemStack[] recipe, String key) {
         super(MiscItems.SUITS, item, RecipeType.ARMOR_FORGE, recipe, null);
 
         this.key = new NamespacedKey(SlimyPowerSuits.getInstance(), key);
+        ItemMeta meta = getItem().getItemMeta();
+        meta.setUnbreakable(true);
+        getItem().setItemMeta(meta);
     }
 
     public abstract int getModuleCapacity();

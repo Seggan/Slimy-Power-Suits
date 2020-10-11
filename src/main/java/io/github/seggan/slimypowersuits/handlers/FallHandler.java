@@ -21,11 +21,9 @@ public class FallHandler implements Listener {
             if (e.getCause() != EntityDamageEvent.DamageCause.FALL) return;
             Player p = (Player) e.getEntity();
             ItemStack boots = p.getInventory().getBoots();
-            if (SuitUtils.hasModule(boots, ModuleType.NO_FALL_DMG)) {
-                if (SuitUtils.getCharge(boots) >= 5) {
-                    SuitUtils.removeCharge(boots, 5);
-                    e.setDamage(0);
-                }
+            if (SuitUtils.hasModule(boots, ModuleType.NO_FALL_DMG) && SuitUtils.getCharge(boots) >= 5) {
+                SuitUtils.removeCharge(boots, 5);
+                e.setDamage(0);
             }
         }
     }

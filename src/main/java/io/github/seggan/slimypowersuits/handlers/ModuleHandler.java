@@ -79,7 +79,7 @@ public class ModuleHandler implements Listener {
             ItemMeta meta = suit.getItemMeta();
             List<String> lore = meta.getLore();
             if (otherItem instanceof Module) {
-                String EMPTY_MODULE = "EMPTY_MODULE";
+                final String EMPTY_MODULE = "EMPTY_MODULE";
                 e.setCancelled(true);
                 SlimefunItem item = SlimefunItem.getByItem(suit);
                 int capacity = ((SuitPiece) item).getModuleCapacity();

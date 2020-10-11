@@ -4,6 +4,7 @@ import dev.j3fftw.litexpansion.Items;
 import io.github.seggan.slimypowersuits.handlers.FallHandler;
 import io.github.seggan.slimypowersuits.handlers.GlowingHandler;
 import io.github.seggan.slimypowersuits.handlers.HurtHandler;
+import io.github.seggan.slimypowersuits.handlers.AttractionHandler;
 import io.github.seggan.slimypowersuits.handlers.ModuleHandler;
 import io.github.seggan.slimypowersuits.handlers.SpeedHandler;
 import io.github.seggan.slimypowersuits.lists.MiscItems;
@@ -22,6 +23,8 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 public class Setup {
+
+    private Setup() {}
 
     static void registerItems(SlimyPowerSuits plugin) {
 
@@ -82,6 +85,30 @@ public class Setup {
             SlimefunItems.WITHER_PROOF_GLASS, MiscItems.EMPTY_MODULE, SlimefunItems.WITHER_PROOF_GLASS,
             new ItemStack(Material.GLOWSTONE_DUST), SlimefunItems.WITHER_PROOF_GLASS, new ItemStack(Material.GLOWSTONE_DUST)
         }, ModuleType.GLOWING).register(plugin);
+
+        new Module(MiscItems.ATTRACTOR_MODULE, new ItemStack[]{
+                new ItemStack(Material.STICK), MiscItems.SUIT_AI, new ItemStack(Material.STICK),
+                MiscItems.SUIT_GENERATOR, MiscItems.EMPTY_MODULE, MiscItems.SUIT_GENERATOR,
+                new ItemStack(Material.STICK), MiscItems.SUIT_AI, new ItemStack(Material.STICK)
+        }, ModuleType.ATTRACTION).register(plugin);
+
+        new Module(MiscItems.REGENERATION_MODULE, new ItemStack[]{
+                SlimefunItems.ESSENCE_OF_AFTERLIFE, MiscItems.SUIT_AI, SlimefunItems.ESSENCE_OF_AFTERLIFE,
+                Items.RAW_CARBON_MESH, MiscItems.EMPTY_MODULE, Items.RAW_CARBON_MESH,
+                SlimefunItems.ESSENCE_OF_AFTERLIFE, MiscItems.SUIT_AI, SlimefunItems.ESSENCE_OF_AFTERLIFE
+        }, ModuleType.REGENERATION).register(plugin);
+
+        new Module(MiscItems.STRENGTH_MODULE, new ItemStack[]{
+                Items.ADVANCED_ALLOY, Items.MAG_THOR, Items.ADVANCED_ALLOY,
+                new ItemStack(Material.WATER_BUCKET), MiscItems.EMPTY_MODULE, new ItemStack(Material.WATER_BUCKET),
+                Items.ADVANCED_ALLOY, Items.MAG_THOR, Items.ADVANCED_ALLOY
+        }, ModuleType.STRENGTH).register(plugin);
+
+        new Module(MiscItems.FLYING_MODULE, new ItemStack[]{
+                Items.ADVANCED_ALLOY, Items.MAG_THOR, Items.ADVANCED_ALLOY,
+                SlimefunItems.STEEL_THRUSTER, MiscItems.EMPTY_MODULE, SlimefunItems.STEEL_THRUSTER,
+                Items.ADVANCED_ALLOY, Items.MAG_THOR, Items.ADVANCED_ALLOY
+        }, ModuleType.FLIGHT).register(plugin);
 
         // register suits
         registerArmor(plugin, 1, SuitItems.MK1_HELMET, new ItemStack[]{
@@ -163,6 +190,7 @@ public class Setup {
         new SpeedHandler(plugin);
         new GlowingHandler(plugin);
         new FallHandler(plugin);
+        new AttractionHandler(plugin);
     }
 
     private static void registerBasicItem(SlimyPowerSuits plugin, SlimefunItemStack item, RecipeType recipe, ItemStack[] items) {
@@ -179,6 +207,10 @@ public class Setup {
                 break;
             case 3:
                 new MK3SuitPiece(item, items).register(plugin);
+                break;
+            default:
+                plugin.getLogger().info("Error when setting up Slimy Power Suits: mark is bigger than 3!");
+                plugin.getServer().getPluginManager().disablePlugin(plugin);
         }
 
     }
