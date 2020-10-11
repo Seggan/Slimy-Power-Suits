@@ -33,15 +33,13 @@ public class SuitUtils {
         List<String> lore = meta.getLore();
         if (lore == null) {
             return new ArrayList<>();
+        } else {
+            return getInstalledModules(lore);
         }
-        return getInstalledModules(lore);
     }
 
     public static boolean isPowerSuitPiece(ItemStack armor) {
         SlimefunItem item = SlimefunItem.getByItem(armor);
-        if (item == null) {
-            return false;
-        }
         return item instanceof SuitPiece;
     }
 
