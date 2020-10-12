@@ -14,6 +14,7 @@ import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.api.Slimefun;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.cscorelib2.inventory.ItemUtils;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Sound;
@@ -29,6 +30,8 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
+import java.util.function.BiFunction;
+import java.util.function.Function;
 
 /**
  * This is a multiblock machine for crafting
@@ -40,18 +43,20 @@ import java.util.List;
  */
 public class ElementForge extends MultiBlockMachine {
 
+    private static final RecipeType RECIPE_TYPE = new RecipeType(
+        new NamespacedKey(SlimyPowerSuits.getInstance(), "element_forge_recipe"),
+        MiscItems.ELEMENT_FORGE,
+        "&cElement Forge",
+        "&7Used to create new elements"
+    );
+
     @Getter
-    public static RecipeType getElementForgeRecipe() {
-        return new RecipeType(
-            new NamespacedKey(SlimyPowerSuits.getInstance(), "element_forge_recipe"),
-            MiscItems.ELEMENT_FORGE,
-            "&cElement Forge",
-            "&7Used to create new elements"
-        );
+    public static RecipeType getMachineRecipeType() {
+        return RECIPE_TYPE;
     }
 
     public ElementForge(Category category, SlimefunItemStack item) {
-        super(category, item, new ItemStack[] {
+        super(category, item, new ItemStack[]{
             new ItemStack(Material.IRON_BLOCK), new CustomItem(Material.PISTON, "&fPiston &7(Facing Down)"),
             new ItemStack(Material.IRON_BLOCK),
             new ItemStack(Material.NETHER_BRICK_WALL), null, new ItemStack(Material.NETHER_BRICK_WALL),
@@ -65,6 +70,11 @@ public class ElementForge extends MultiBlockMachine {
         Block dispenser = locateDispenser(b);
         Block piston = b.getRelative(0, 2, 0);
 
+        if (dispenser == null) {
+            p.sendMessage(ChatColor.RED + "Could not locate dispenser!");
+            return;
+        }
+
         BlockState dispenserState = PaperLib.getBlockState(dispenser, false).getState();
         BlockData pistonData = piston.getBlockData();
 
@@ -72,7 +82,7 @@ public class ElementForge extends MultiBlockMachine {
             && ((Piston) pistonData).getFacing() == BlockFace.DOWN
             && piston.getRelative(0, -1, 0).getType() == Material.AIR) {
             Dispenser disp = (Dispenser) dispenserState;
-            Piston piss = (Piston) pistonData;
+            Piston pistun = (Piston) pistonData;
             Inventory inv = disp.getInventory();
             List<ItemStack[]> inputs = RecipeType.getRecipeInputList(this);
 
@@ -86,9 +96,9 @@ public class ElementForge extends MultiBlockMachine {
                         if (outputInv != null) {
                             craft(output, inv, outputInv);
 
-                            movePiston(piston, piss, true);
+                            movePiston(piston, pistun, true);
 
-                            Utils.runSync(() -> movePiston(piston, piss, false), 10L);
+                            Utils.runSync(() -> movePiston(piston, pistun, false), 10L);
 
                         } else {
                             SlimefunPlugin.getLocalization().sendMessage(p, "machines.full-inventory", true);
@@ -126,22 +136,24 @@ public class ElementForge extends MultiBlockMachine {
 
     private Block locateDispenser(Block b) {
 
-        if (b.getRelative(1, 0, 0).getType() == Material.DISPENSER) {
-            return  b.getRelative(1, 0, 0);
-        } else if (b.getRelative(0, 0, 1).getType() == Material.DISPENSER) {
-            return  b.getRelative(0, 0, 1);
-        } else if (b.getRelative(-1, 0, 0).getType() == Material.DISPENSER) {
-            return  b.getRelative(-1, 0, 0);
-        } else if (b.getRelative(0, 0, -1).getType() == Material.DISPENSER) {
-            return  b.getRelative(0, 0, -1);
-        }
+        Function<Block, Boolean> func = block -> block.getType() == Material.DISPENSER;
 
-        return null;
+        if (func.apply(b.getRelative(1, 0, 0))) {
+            return b.getRelative(1, 0, 0);
+        } else if (func.apply(b.getRelative(0, 0, 1))) {
+            return b.getRelative(0, 0, 1);
+        } else if (func.apply(b.getRelative(-1, 0, 0))) {
+            return b.getRelative(-1, 0, 0);
+        } else if (func.apply(b.getRelative(0, 0, -1))) {
+            return b.getRelative(0, 0, -1);
+        } else {
+            return null;
+        }
     }
 
-    private void movePiston(Block piston, Piston piss, boolean extended) {
-        piss.setExtended(extended);
-        piston.setBlockData(piss, false);
+    private void movePiston(Block piston, Piston pistn, boolean extended) {
+        pistn.setExtended(extended);
+        piston.setBlockData(pistn, false);
 
         // Updating the Piston Head
         if (extended) {

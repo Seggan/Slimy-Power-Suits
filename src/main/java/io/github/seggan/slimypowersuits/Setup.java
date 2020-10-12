@@ -8,6 +8,7 @@ import io.github.seggan.slimypowersuits.handlers.AttractionHandler;
 import io.github.seggan.slimypowersuits.handlers.ModuleHandler;
 import io.github.seggan.slimypowersuits.handlers.SpeedHandler;
 import io.github.seggan.slimypowersuits.lists.MiscItems;
+import io.github.seggan.slimypowersuits.lists.ModuleItems;
 import io.github.seggan.slimypowersuits.lists.SuitItems;
 import io.github.seggan.slimypowersuits.machines.ElementForge;
 import io.github.seggan.slimypowersuits.modules.Module;
@@ -22,16 +23,17 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-public class Setup {
+public final class Setup {
 
-    private Setup() {}
+    private Setup() {
+    }
 
     static void registerItems(SlimyPowerSuits plugin) {
 
         new ElementForge(MiscItems.SUITS, MiscItems.ELEMENT_FORGE).register(plugin);
 
         // Register items
-        registerBasicItem(plugin, MiscItems.UNPATENTABLIUM, ElementForge.getElementForgeRecipe(), new ItemStack[]{
+        registerBasicItem(plugin, MiscItems.UNPATENTABLIUM, ElementForge.getMachineRecipeType(), new ItemStack[]{
             Items.MAG_THOR, Items.UU_MATTER, Items.MAG_THOR,
             Items.UU_MATTER, Items.IRIDIUM, Items.UU_MATTER,
             Items.MAG_THOR, Items.UU_MATTER, Items.MAG_THOR
@@ -50,70 +52,70 @@ public class Setup {
         });
 
         // register modules
-        new Module(MiscItems.DUMMY_MODULE, new ItemStack[]{
+        new Module(ModuleItems.DUMMY_MODULE, new ItemStack[]{
             null, null, null,
             null, new ItemStack(Material.BARRIER), null,
             null, null, null
         }, ModuleType.DUMMY).register(plugin);
 
-        registerBasicItem(plugin, MiscItems.EMPTY_MODULE, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
+        registerBasicItem(plugin, ModuleItems.EMPTY_MODULE, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
             Items.MAG_THOR, Items.IRIDIUM_PLATE, Items.MAG_THOR,
             Items.IRIDIUM_PLATE, MiscItems.SUIT_GENERATOR, Items.IRIDIUM_PLATE,
             Items.MAG_THOR, Items.IRIDIUM_PLATE, Items.MAG_THOR
         });
 
-        new Module(MiscItems.SPEED_MODULE, new ItemStack[]{
+        new Module(ModuleItems.SPEED_MODULE, new ItemStack[]{
             new ItemStack(Material.SLIME_BALL), Items.ADVANCED_ALLOY, new ItemStack(Material.SLIME_BALL),
-            Items.ADVANCED_ALLOY, MiscItems.EMPTY_MODULE, Items.ADVANCED_ALLOY,
+            Items.ADVANCED_ALLOY, ModuleItems.EMPTY_MODULE, Items.ADVANCED_ALLOY,
             new ItemStack(Material.SLIME_BALL), Items.ADVANCED_ALLOY, new ItemStack(Material.SLIME_BALL)
         }, ModuleType.SPEED).register(plugin);
 
-        new Module(MiscItems.RESISTANCE_MODULE, new ItemStack[]{
+        new Module(ModuleItems.RESISTANCE_MODULE, new ItemStack[]{
             Items.IRIDIUM_PLATE, Items.UU_MATTER, Items.IRIDIUM_PLATE,
-            Items.UU_MATTER, MiscItems.EMPTY_MODULE, Items.UU_MATTER,
+            Items.UU_MATTER, ModuleItems.EMPTY_MODULE, Items.UU_MATTER,
             Items.IRIDIUM_PLATE, Items.UU_MATTER, Items.IRIDIUM_PLATE
         }, ModuleType.RESISTANCE).register(plugin);
 
-        new Module(MiscItems.FEATHER_MODULE, new ItemStack[]{
+        new Module(ModuleItems.FEATHER_MODULE, new ItemStack[]{
             new ItemStack(Material.FEATHER), Items.RAW_CARBON_MESH, new ItemStack(Material.FEATHER),
-            Items.RAW_CARBON_MESH, MiscItems.EMPTY_MODULE, Items.RAW_CARBON_MESH,
+            Items.RAW_CARBON_MESH, ModuleItems.EMPTY_MODULE, Items.RAW_CARBON_MESH,
             new ItemStack(Material.FEATHER), Items.RAW_CARBON_MESH, new ItemStack(Material.FEATHER)
         }, ModuleType.NO_FALL_DMG).register(plugin);
 
-        new Module(MiscItems.GLOWING_MODULE, new ItemStack[]{
+        new Module(ModuleItems.GLOWING_MODULE, new ItemStack[]{
             new ItemStack(Material.GLOWSTONE_DUST), SlimefunItems.WITHER_PROOF_GLASS, new ItemStack(Material.GLOWSTONE_DUST),
-            SlimefunItems.WITHER_PROOF_GLASS, MiscItems.EMPTY_MODULE, SlimefunItems.WITHER_PROOF_GLASS,
+            SlimefunItems.WITHER_PROOF_GLASS, ModuleItems.EMPTY_MODULE, SlimefunItems.WITHER_PROOF_GLASS,
             new ItemStack(Material.GLOWSTONE_DUST), SlimefunItems.WITHER_PROOF_GLASS, new ItemStack(Material.GLOWSTONE_DUST)
         }, ModuleType.GLOWING).register(plugin);
 
-        new Module(MiscItems.ATTRACTOR_MODULE, new ItemStack[]{
-                new ItemStack(Material.STICK), MiscItems.SUIT_AI, new ItemStack(Material.STICK),
-                MiscItems.SUIT_GENERATOR, MiscItems.EMPTY_MODULE, MiscItems.SUIT_GENERATOR,
-                new ItemStack(Material.STICK), MiscItems.SUIT_AI, new ItemStack(Material.STICK)
+        new Module(ModuleItems.ATTRACTOR_MODULE, new ItemStack[]{
+            new ItemStack(Material.STICK), MiscItems.SUIT_AI, new ItemStack(Material.STICK),
+            MiscItems.SUIT_GENERATOR, ModuleItems.EMPTY_MODULE, MiscItems.SUIT_GENERATOR,
+            new ItemStack(Material.STICK), MiscItems.SUIT_AI, new ItemStack(Material.STICK)
         }, ModuleType.ATTRACTION).register(plugin);
 
-        new Module(MiscItems.REGENERATION_MODULE, new ItemStack[]{
-                SlimefunItems.ESSENCE_OF_AFTERLIFE, MiscItems.SUIT_AI, SlimefunItems.ESSENCE_OF_AFTERLIFE,
-                Items.RAW_CARBON_MESH, MiscItems.EMPTY_MODULE, Items.RAW_CARBON_MESH,
-                SlimefunItems.ESSENCE_OF_AFTERLIFE, MiscItems.SUIT_AI, SlimefunItems.ESSENCE_OF_AFTERLIFE
+        new Module(ModuleItems.REGENERATION_MODULE, new ItemStack[]{
+            SlimefunItems.ESSENCE_OF_AFTERLIFE, MiscItems.SUIT_AI, SlimefunItems.ESSENCE_OF_AFTERLIFE,
+            Items.RAW_CARBON_MESH, ModuleItems.EMPTY_MODULE, Items.RAW_CARBON_MESH,
+            SlimefunItems.ESSENCE_OF_AFTERLIFE, MiscItems.SUIT_AI, SlimefunItems.ESSENCE_OF_AFTERLIFE
         }, ModuleType.REGENERATION).register(plugin);
 
-        new Module(MiscItems.STRENGTH_MODULE, new ItemStack[]{
-                Items.ADVANCED_ALLOY, Items.MAG_THOR, Items.ADVANCED_ALLOY,
-                new ItemStack(Material.WATER_BUCKET), MiscItems.EMPTY_MODULE, new ItemStack(Material.WATER_BUCKET),
-                Items.ADVANCED_ALLOY, Items.MAG_THOR, Items.ADVANCED_ALLOY
+        new Module(ModuleItems.STRENGTH_MODULE, new ItemStack[]{
+            Items.ADVANCED_ALLOY, Items.MAG_THOR, Items.ADVANCED_ALLOY,
+            new ItemStack(Material.WATER_BUCKET), ModuleItems.EMPTY_MODULE, new ItemStack(Material.WATER_BUCKET),
+            Items.ADVANCED_ALLOY, Items.MAG_THOR, Items.ADVANCED_ALLOY
         }, ModuleType.STRENGTH).register(plugin);
 
-        new Module(MiscItems.FLYING_MODULE, new ItemStack[]{
-                Items.ADVANCED_ALLOY, Items.MAG_THOR, Items.ADVANCED_ALLOY,
-                SlimefunItems.STEEL_THRUSTER, MiscItems.EMPTY_MODULE, SlimefunItems.STEEL_THRUSTER,
-                Items.ADVANCED_ALLOY, Items.MAG_THOR, Items.ADVANCED_ALLOY
+        new Module(ModuleItems.FLYING_MODULE, new ItemStack[]{
+            Items.ADVANCED_ALLOY, Items.MAG_THOR, Items.ADVANCED_ALLOY,
+            SlimefunItems.STEEL_THRUSTER, ModuleItems.EMPTY_MODULE, SlimefunItems.STEEL_THRUSTER,
+            Items.ADVANCED_ALLOY, Items.MAG_THOR, Items.ADVANCED_ALLOY
         }, ModuleType.FLIGHT).register(plugin);
 
-        new Module(MiscItems.FIRE_RES_MODULE, new ItemStack[]{
-                new ItemStack(Material.MAGMA_CREAM), Items.MAG_THOR, new ItemStack(Material.MAGMA_CREAM),
-                Items.MAG_THOR, MiscItems.EMPTY_MODULE, Items.MAG_THOR,
-                new ItemStack(Material.MAGMA_CREAM), Items.MAG_THOR, new ItemStack(Material.MAGMA_CREAM)
+        new Module(ModuleItems.FIRE_RES_MODULE, new ItemStack[]{
+            new ItemStack(Material.MAGMA_CREAM), Items.MAG_THOR, new ItemStack(Material.MAGMA_CREAM),
+            Items.MAG_THOR, ModuleItems.EMPTY_MODULE, Items.MAG_THOR,
+            new ItemStack(Material.MAGMA_CREAM), Items.MAG_THOR, new ItemStack(Material.MAGMA_CREAM)
         }, ModuleType.FIRE_RES).register(plugin);
 
         // register suits
