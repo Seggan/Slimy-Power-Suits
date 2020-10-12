@@ -1,7 +1,7 @@
 package io.github.seggan.slimypowersuits.handlers;
 
 import com.google.common.collect.Iterables;
-import io.github.seggan.slimypowersuits.SuitUtils;
+import io.github.seggan.slimypowersuits.util.SuitUtils;
 import io.github.seggan.slimypowersuits.modules.Module;
 import io.github.seggan.slimypowersuits.modules.ModuleType;
 import io.github.seggan.slimypowersuits.suits.SuitPiece;

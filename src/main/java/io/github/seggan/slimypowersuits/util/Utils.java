@@ -1,5 +1,6 @@
-package io.github.seggan.slimypowersuits;
+package io.github.seggan.slimypowersuits.util;
 
+import io.github.seggan.slimypowersuits.SlimyPowerSuits;
 import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitTask;
 

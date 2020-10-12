@@ -1,7 +1,7 @@
 package io.github.seggan.slimypowersuits.handlers;
 
 import io.github.seggan.slimypowersuits.SlimyPowerSuits;
-import io.github.seggan.slimypowersuits.SuitUtils;
+import io.github.seggan.slimypowersuits.util.SuitUtils;
 import io.github.seggan.slimypowersuits.modules.ModuleType;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.LivingEntity;

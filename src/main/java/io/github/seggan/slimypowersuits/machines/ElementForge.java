@@ -1,7 +1,7 @@
 package io.github.seggan.slimypowersuits.machines;
 
 import io.github.seggan.slimypowersuits.SlimyPowerSuits;
-import io.github.seggan.slimypowersuits.Utils;
+import io.github.seggan.slimypowersuits.util.Utils;
 import io.github.seggan.slimypowersuits.lists.MiscItems;
 import io.github.thebusybiscuit.slimefun4.core.multiblocks.MultiBlockMachine;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;

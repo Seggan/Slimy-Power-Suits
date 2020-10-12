@@ -1,7 +1,7 @@
 package io.github.seggan.slimypowersuits.handlers;
 
 import io.github.seggan.slimypowersuits.SlimyPowerSuits;
-import io.github.seggan.slimypowersuits.SuitUtils;
+import io.github.seggan.slimypowersuits.util.SuitUtils;
 import io.github.seggan.slimypowersuits.modules.ModuleType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 import me.mrCookieSlime.Slimefun.cscorelib2.protection.ProtectableAction;

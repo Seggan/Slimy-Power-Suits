@@ -1,4 +1,4 @@
-package io.github.seggan.slimypowersuits;
+package io.github.seggan.slimypowersuits.util;
 
 import io.github.seggan.slimypowersuits.modules.ModuleType;
 import io.github.seggan.slimypowersuits.suits.SuitPiece;

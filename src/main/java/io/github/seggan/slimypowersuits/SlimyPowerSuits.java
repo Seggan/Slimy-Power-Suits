@@ -2,6 +2,7 @@ package io.github.seggan.slimypowersuits;
 
 import io.github.seggan.slimypowersuits.lists.MiscItems;
 import io.github.seggan.slimypowersuits.modules.ModuleType;
+import io.github.seggan.slimypowersuits.util.SuitUtils;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import me.mrCookieSlime.Slimefun.cscorelib2.updater.GitHubBuildsUpdater;
 import org.bstats.bukkit.Metrics;
