@@ -18,9 +18,9 @@ public final class MiscItems {
     public static final SlimefunItemStack FLYING_MODULE = new SlimefunItemStack(
             "FLIGHT_MODULE",
             MODULE_TEXTURE,
-            "Miniaturized Jets",
+            "Mini Jets",
             "",
-            "Miniaturized jets can",
+            "Mini jets can",
             "allow you to fly.",
             "Install on boots.",
             "5 J/s while flying"
