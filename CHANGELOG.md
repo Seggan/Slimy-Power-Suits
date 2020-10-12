@@ -1,13 +1,12 @@
 ## Upcoming:
 - Repulsor Beams: Who needs walking sticks anyway?
-- Heat Sink: My hot tub is filled with lava.
+- Element Forge: No Metal Forge? No problem.
 
 ## Build 8:
 - Added Mini Jets
 - Added Integrated Hydraulics
 - Added Life Support Systems
 - Added Heat Sink
-- Added Element Forge
 
 ## Build 7:
 - Fixed typos
