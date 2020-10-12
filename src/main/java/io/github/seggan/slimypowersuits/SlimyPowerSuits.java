@@ -107,6 +107,17 @@ public class SlimyPowerSuits extends JavaPlugin implements SlimefunAddon {
                     ));
                     SuitUtils.removeCharge(item, 1);
                 }
+                if (modules.contains(ModuleType.FIRE_RES)) {
+                    p.addPotionEffect(new PotionEffect(
+                            PotionEffectType.FIRE_RESISTANCE,
+                            21,
+                            1,
+                            false,
+                            false,
+                            false
+                    ));
+                    SuitUtils.removeCharge(item, 1);
+                }
             }
             item = inv.getLeggings();
             if (SuitUtils.isPowerSuitPiece(item)) {

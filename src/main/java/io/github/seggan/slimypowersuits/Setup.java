@@ -107,6 +107,12 @@ public class Setup {
                 Items.ADVANCED_ALLOY, Items.MAG_THOR, Items.ADVANCED_ALLOY
         }, ModuleType.FLIGHT).register(plugin);
 
+        new Module(MiscItems.FIRE_RES_MODULE, new ItemStack[]{
+                new ItemStack(Material.MAGMA_CREAM), Items.MAG_THOR, new ItemStack(Material.MAGMA_CREAM),
+                Items.MAG_THOR, MiscItems.EMPTY_MODULE, Items.MAG_THOR,
+                new ItemStack(Material.MAGMA_CREAM), Items.MAG_THOR, new ItemStack(Material.MAGMA_CREAM)
+        }, ModuleType.FIRE_RES).register(plugin);
+
         // register suits
         registerArmor(plugin, 1, SuitItems.MK1_HELMET, new ItemStack[]{
             Items.IRIDIUM_PLATE, MiscItems.SUIT_GENERATOR, Items.IRIDIUM_PLATE,

@@ -7,6 +7,7 @@
 - Added Integrated Hydraulics
 - Added Life Support Systems
 - Added Heat Sink
+- Made power suits indestructible
 
 ## Build 7:
 - Fixed typos
