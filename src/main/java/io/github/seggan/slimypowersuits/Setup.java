@@ -1,7 +1,6 @@
 package io.github.seggan.slimypowersuits;
 
 import dev.j3fftw.litexpansion.Items;
-import dev.j3fftw.litexpansion.machine.MetalForge;
 import io.github.seggan.slimypowersuits.handlers.FallHandler;
 import io.github.seggan.slimypowersuits.handlers.GlowingHandler;
 import io.github.seggan.slimypowersuits.handlers.HurtHandler;
@@ -10,6 +9,7 @@ import io.github.seggan.slimypowersuits.handlers.ModuleHandler;
 import io.github.seggan.slimypowersuits.handlers.SpeedHandler;
 import io.github.seggan.slimypowersuits.lists.MiscItems;
 import io.github.seggan.slimypowersuits.lists.SuitItems;
+import io.github.seggan.slimypowersuits.machines.ElementForge;
 import io.github.seggan.slimypowersuits.modules.Module;
 import io.github.seggan.slimypowersuits.modules.ModuleType;
 import io.github.seggan.slimypowersuits.suits.MK1SuitPiece;
@@ -27,8 +27,11 @@ public class Setup {
     private Setup() {}
 
     static void registerItems(SlimyPowerSuits plugin) {
+
+        new ElementForge(MiscItems.SUITS, MiscItems.ELEMENT_FORGE).register(plugin);
+
         // Register items
-        registerBasicItem(plugin, MiscItems.UNPATENTABLIUM, MetalForge.RECIPE_TYPE, new ItemStack[]{
+        registerBasicItem(plugin, MiscItems.UNPATENTABLIUM, ElementForge.getElementForgeRecipe(), new ItemStack[]{
             Items.MAG_THOR, Items.UU_MATTER, Items.MAG_THOR,
             Items.UU_MATTER, Items.IRIDIUM, Items.UU_MATTER,
             Items.MAG_THOR, Items.UU_MATTER, Items.MAG_THOR
