@@ -179,10 +179,9 @@ public final class MiscItems {
             MODULE_TEXTURE,
             "Heat Sinks",
             "",
-            "Miniaturized jets can",
-            "allow you to fly.",
-            "Install on boots.",
-            "5 J/s while flying"
+            "These heat sinks will",
+            "protect your from fire and lava.",
+            "Install on chestplate.",
+            "1 J/s"
     );
-
 }
