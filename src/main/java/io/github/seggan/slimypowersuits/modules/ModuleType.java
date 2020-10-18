@@ -4,7 +4,6 @@ public enum ModuleType {
     DUMMY("Dummy", "DUMMY_MODULE"), // used for testing purposes
     NO_FALL_DMG("Nanofiber Cushion", "FEATHER_FALLING_MODULE"),
     RESISTANCE("Kinetic Reactive Alloy", "RESISTANCE_MODULE"),
-    NIGHT_VISION("Night Vision Lenses", ""),
     GLOWING("Entity Scanner", "GLOWING_MODULE"),
     STRENGTH("Integrated Hydraulics", "STRENGTH_MODULE"),
     ATTRACTION("Attractor Beam", "ATTRACTOR_MODULE"),
