@@ -1,16 +1,13 @@
 package io.github.seggan.slimypowersuits.util;
 
-import com.sun.istack.internal.Nullable;
 import io.github.seggan.slimypowersuits.lists.Constants;
 import io.github.seggan.slimypowersuits.modules.ModuleType;
 import io.github.thebusybiscuit.slimefun4.api.player.PlayerProfile;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
@@ -31,7 +28,7 @@ public class SuitCache {
 
     private SuitCache() {}
 
-    @Nullable
+
     public ModuleType getActiveModule() {
         return activeModule;
     }
