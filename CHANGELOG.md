@@ -1,6 +1,9 @@
 ## Upcoming:
 - Repulsor Beams: Who needs walking sticks anyway?
-- Element Forge: No Metal Forge? No problem.
+
+## Build 9:
+- Added Element Forge
+- Fixes
 
 ## Build 8:
 - Added Mini Jets

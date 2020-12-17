@@ -8,7 +8,7 @@ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
 import io.github.thebusybiscuit.slimefun4.libraries.paperlib.PaperLib;
 import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 import jdk.nashorn.internal.objects.annotations.Getter;
-import me.mrCookieSlime.CSCoreLibPlugin.cscorelib2.item.CustomItem;
+import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
 import me.mrCookieSlime.Slimefun.Lists.RecipeType;
 import me.mrCookieSlime.Slimefun.Objects.Category;
 import me.mrCookieSlime.Slimefun.api.Slimefun;
