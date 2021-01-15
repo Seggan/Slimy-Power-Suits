@@ -44,7 +44,7 @@ public class SlimyPowerSuits extends JavaPlugin implements SlimefunAddon {
 
         Setup.registerListeners(this);
 
-        MiscItems.SUITS.register();
+        MiscItems.SUITS.register(this);
 
         Setup.registerItems(this);
 
