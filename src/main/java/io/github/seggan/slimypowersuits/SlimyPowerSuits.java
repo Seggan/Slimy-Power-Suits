@@ -26,7 +26,7 @@ public class SlimyPowerSuits extends JavaPlugin implements SlimefunAddon {
 
     @Override
     public void onEnable() {
-        getLogger().info("Slimy Power Suits enabled.");
+        getLogger().info("WARNING: Slimy Power Suits is officially abandoned. No more updates will come. The developer will release a new addon to replace it.");
 
         instance = this;
 

@@ -1,5 +1,7 @@
 # Slimy Power Suits
 
+## Slimy Power Suits is officially abandoned. No more updates will come. The developer will release a new addon to replace it.D
+
 This LiteXpansion addon, inspired by the mod Modular Power Suits, adds modular power suits to Minecraft.
 
 ### Note: Still under development; not much content yet.
